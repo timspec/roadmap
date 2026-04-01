@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Mastery Roadmap — 7 Months</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a0f;
+    --bg2: #080e16;
+    --panel: #0a1420;
+    --panel2: #0d1a28;
+    --border: #0f3a55;
+    --accent: #00d4ff;
+    --accent2: #00ff88;
+    --accent3: #ff6b35;
+    --accent4: #a855f7;
+    --text: #c9e8f5;
+    --text-dim: #5a8099;
+    --glow: 0 0 20px rgba(0,212,255,0.3);
+    --glow2: 0 0 20px rgba(0,255,136,0.3);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Animated grid background */
+  body::before {
+    content:'';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Scanline effect */
+  body::after {
+    content:'';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    position: relative;
+    padding: 60px 20px 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  header::before {
+    content:'';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(0,212,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .shield-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 20px rgba(0,212,255,0.7));
+    animation: pulse-shield 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-shield {
+    0%,100% { filter: drop-shadow(0 0 20px rgba(0,212,255,0.7)); }
+    50% { filter: drop-shadow(0 0 40px rgba(0,212,255,1)); }
+  }
+
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px auto 0;
+    max-width: 900px;
+  }
+
+  .stat-chip {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-chip::before {
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,0.05), transparent);
+  }
+
+  .stat-chip .stat-label { color: var(--text-dim); font-size: 0.65rem; display: block; margin-bottom: 2px; }
+
+  /* Navigation tabs */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    padding: 40px 20px 0;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .tab-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tab-btn::after {
+    content:'';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+
+  .tab-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .tab-btn.active { color: var(--accent); border-color: var(--accent); background: rgba(0,212,255,0.08); }
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  /* Phase color coding */
+  .tab-btn[data-phase="overview"] { --c: #00d4ff; }
+  .tab-btn[data-phase="m1"] { --c: #00ff88; }
+  .tab-btn[data-phase="m2"] { --c: #4ade80; }
+  .tab-btn[data-phase="m3"] { --c: #facc15; }
+  .tab-btn[data-phase="m35"] { --c: #fb923c; }
+  .tab-btn[data-phase="m4"] { --c: #f87171; }
+  .tab-btn[data-phase="m5"] { --c: #a855f7; }
+  .tab-btn[data-phase="m6"] { --c: #38bdf8; }
+  .tab-btn[data-phase="m7"] { --c: #e879f9; }
+  .tab-btn[data-phase="resources"] { --c: #94a3b8; }
+  .tab-btn[data-phase="projects"] { --c: #ff6b35; }
+
+  .tab-btn.active { color: var(--c); border-color: var(--c); background: rgba(0,0,0,0.3); }
+  .tab-btn.active::after { background: var(--c); }
+  .tab-btn:hover { color: var(--c); border-color: var(--c); }
+
+  /* Tab content */
+  .tab-content { display: none; padding: 30px 20px; max-width: 1400px; margin: 0 auto; }
+  .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity:0; transform: translateY(10px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+
+  /* Overview section */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .phase-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card::before {
+    content:'';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--card-color, var(--accent));
+  }
+
+  .phase-card::after {
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .phase-card:hover {
+    border-color: var(--card-color, var(--accent));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--card-color, var(--accent));
+  }
+
+  .phase-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--card-color, var(--accent));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .phase-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .phase-focus {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .phase-skills {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .skill-tag {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--card-color, var(--accent));
+    letter-spacing: 0.05em;
+  }
+
+  /* Section title */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .section-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--section-color, var(--accent));
+    border: 1px solid var(--section-color, var(--accent));
+    border-radius: 3px;
+    padding: 4px 10px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Progress tracker */
+  .progress-bar-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .progress-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .progress-bar-outer {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--section-color, var(--accent)), rgba(255,255,255,0.3));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+
+  .progress-count {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--section-color, var(--accent));
+    white-space: nowrap;
+  }
+
+  /* Day table / cards */
+  .search-bar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 16px;
+    width: 100%;
+    max-width: 400px;
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.82rem;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-bar:focus { border-color: var(--accent); }
+  .search-bar::placeholder { color: var(--text-dim); }
+
+  .day-grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  .day-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card::before {
+    content:'';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--section-color, var(--accent));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .day-card:hover { border-color: var(--section-color, var(--accent)); background: var(--panel2); }
+  .day-card:hover::before { opacity: 1; }
+  .day-card.completed { opacity: 0.5; }
+  .day-card.completed .day-num { text-decoration: line-through; }
+
+  .day-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--section-color, var(--accent));
+    text-align: center;
+    line-height: 1;
+  }
+
+  .day-ref {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .day-body { flex: 1; }
+
+  .day-topic {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .day-learn {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .day-task {
+    background: rgba(0,0,0,0.3);
+    border-left: 2px solid var(--section-color, var(--accent));
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    color: var(--text);
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 8px;
+  }
+
+  .day-task::before { content: '⚡ '; opacity: 0.7; }
+
+  .day-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .day-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 3px;
+    padding: 2px 8px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .day-link:hover { background: rgba(0,212,255,0.2); color: #fff; }
+
+  .day-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    min-width: 80px;
+  }
+
+  .day-lang {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--section-color, var(--accent));
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--section-color, var(--accent));
+    border-radius: 3px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  .day-time {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  .day-check {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    transition: all 0.15s;
+  }
+
+  .day-check:hover { border-color: var(--accent2); color: var(--accent2); }
+  .day-card.completed .day-check { border-color: var(--accent2); color: var(--accent2); background: rgba(0,255,136,0.1); }
+
+  /* Projects grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+
+  .project-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+
+  .project-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent3);
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+  }
+
+  .project-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .project-phase {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+
+  .project-lang {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+  }
+
+  /* Resources table */
+  .resources-grid {
+    display: grid;
+    gap: 8px;
+  }
+
+  .res-category-header {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 20px 0 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+
+  .res-item {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: all 0.15s;
+  }
+
+  .res-item:hover { border-color: var(--accent); }
+
+  .res-name {
+    font-size: 0.88rem;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .res-type {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  .res-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 3px;
+    padding: 4px 10px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .res-link:hover { background: rgba(0,212,255,0.15); color: #fff; }
+
+  /* Terminal blinking cursor */
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .day-card { grid-template-columns: 50px 1fr; }
+    .day-meta { display: none; }
+    .tab-btn { font-size: 0.78rem; padding: 8px 12px; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* Filter buttons */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .filter-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    padding: 5px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.08em;
+  }
+
+  .filter-btn:hover, .filter-btn.active { border-color: var(--accent); color: var(--accent); }
+
+  .overall-progress {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    margin: 0 20px 0;
+    max-width: 1400px;
+    margin: 20px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .overall-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .overall-bar-outer {
+    flex: 1;
+    min-width: 200px;
+    height: 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .overall-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .overall-pct {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="shield-icon">🛡️</span>
+  <h1>Cybersecurity <span>Mastery</span> Roadmap</h1>
+  <div class="subtitle">7 Months · 2 hrs/day · Zero to Advanced<span class="cursor"></span></div>
+  <div class="stats-bar">
+    <div class="stat-chip"><span class="stat-label">TOTAL DAYS</span>210</div>
+    <div class="stat-chip"><span class="stat-label">DAILY TIME</span>2+ HRS</div>
+    <div class="stat-chip"><span class="stat-label">LANGUAGES</span>Python · C · JS</div>
+    <div class="stat-chip"><span class="stat-label">PROJECTS</span>17 Capstone</div>
+    <div class="stat-chip"><span class="stat-label">RESOURCES</span>100% Free</div>
+    <div class="stat-chip"><span class="stat-label">CERTS</span>Security+ → OSCP</div>
+  </div>
+</header>
+
+<div class="overall-progress">
+  <div class="overall-label">OVERALL PROGRESS</div>
+  <div class="overall-bar-outer">
+    <div class="overall-bar-inner" id="overallBar" style="width:0%"></div>
+  </div>
+  <div class="overall-pct"><span id="overallPct">0</span>%</div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:var(--text-dim)"><span id="completedCount">0</span> / 210 days</div>
+</div>
+
+<nav>
+  <button class="tab-btn active" data-phase="overview" onclick="showTab('overview')">📋 Overview</button>
+  <button class="tab-btn" data-phase="m1" onclick="showTab('m1')">Month 1 — Foundations</button>
+  <button class="tab-btn" data-phase="m2" onclick="showTab('m2')">Month 2 — Python</button>
+  <button class="tab-btn" data-phase="m3" onclick="showTab('m3')">Month 3 — C Language</button>
+  <button class="tab-btn" data-phase="m35" onclick="showTab('m35')">Month 3.5 — JavaScript</button>
+  <button class="tab-btn" data-phase="m4" onclick="showTab('m4')">Month 4 — Security Ops</button>
+  <button class="tab-btn" data-phase="m5" onclick="showTab('m5')">Month 5 — Red Team</button>
+  <button class="tab-btn" data-phase="m6" onclick="showTab('m6')">Month 6 — Cloud</button>
+  <button class="tab-btn" data-phase="m7" onclick="showTab('m7')">Month 7 — Placement</button>
+  <button class="tab-btn" data-phase="projects" onclick="showTab('projects')">🚀 Projects</button>
+  <button class="tab-btn" data-phase="resources" onclick="showTab('resources')">🔗 Resources</button>
+</nav>
+
+<!-- OVERVIEW TAB -->
+<div id="tab-overview" class="tab-content active">
+  <div class="section-header">
+    <div class="section-title">Roadmap Overview</div>
+    <div class="section-badge">Phase 1 → 8</div>
+  </div>
+  <div class="overview-grid">
+    <div class="phase-card" style="--card-color:#00ff88" onclick="showTab('m1')">
+      <div class="phase-num">Phase 1 · Month 1</div>
+      <div class="phase-title">Foundations</div>
+      <div class="phase-focus">Linux, Networking, Git, CompTIA concepts</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#00ff88">CLI</span>
+        <span class="skill-tag" style="--card-color:#00ff88">Bash</span>
+        <span class="skill-tag" style="--card-color:#00ff88">TCP/IP</span>
+        <span class="skill-tag" style="--card-color:#00ff88">DNS</span>
+        <span class="skill-tag" style="--card-color:#00ff88">HTTP</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#4ade80" onclick="showTab('m2')">
+      <div class="phase-num">Phase 2 · Month 2</div>
+      <div class="phase-title">Python — Beginner → Advanced</div>
+      <div class="phase-focus">Syntax, OOP, sockets, ctypes, exploits</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#4ade80">Sockets</span>
+        <span class="skill-tag" style="--card-color:#4ade80">Scapy</span>
+        <span class="skill-tag" style="--card-color:#4ade80">OOP</span>
+        <span class="skill-tag" style="--card-color:#4ade80">Requests</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#facc15" onclick="showTab('m3')">
+      <div class="phase-num">Phase 3 · Month 3</div>
+      <div class="phase-title">C Language — Beginner → Advanced</div>
+      <div class="phase-focus">Pointers, memory, shellcode, buffer overflow</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#facc15">Pointers</span>
+        <span class="skill-tag" style="--card-color:#facc15">GDB</span>
+        <span class="skill-tag" style="--card-color:#facc15">Shellcode</span>
+        <span class="skill-tag" style="--card-color:#facc15">WinAPI</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#fb923c" onclick="showTab('m35')">
+      <div class="phase-num">Phase 4 · Month 3.5</div>
+      <div class="phase-title">JavaScript — Beginner → Advanced</div>
+      <div class="phase-focus">DOM, Node.js, XSS, CSRF, custom tools</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#fb923c">XSS</span>
+        <span class="skill-tag" style="--card-color:#fb923c">CSRF</span>
+        <span class="skill-tag" style="--card-color:#fb923c">Node.js</span>
+        <span class="skill-tag" style="--card-color:#fb923c">Puppeteer</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#f87171" onclick="showTab('m4')">
+      <div class="phase-num">Phase 5 · Month 4</div>
+      <div class="phase-title">Networking Deep Dive + Security Ops</div>
+      <div class="phase-focus">Wireshark, Nmap, Metasploit, OWASP</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#f87171">SQLi</span>
+        <span class="skill-tag" style="--card-color:#f87171">Burp</span>
+        <span class="skill-tag" style="--card-color:#f87171">Metasploit</span>
+        <span class="skill-tag" style="--card-color:#f87171">AD</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#a855f7" onclick="showTab('m5')">
+      <div class="phase-num">Phase 6 · Month 5</div>
+      <div class="phase-title">Offensive Security — Red Team</div>
+      <div class="phase-focus">Custom exploits, C2, privilege escalation</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#a855f7">C2</span>
+        <span class="skill-tag" style="--card-color:#a855f7">ROP</span>
+        <span class="skill-tag" style="--card-color:#a855f7">Phishing</span>
+        <span class="skill-tag" style="--card-color:#a855f7">OPSEC</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#38bdf8" onclick="showTab('m6')">
+      <div class="phase-num">Phase 7 · Month 6</div>
+      <div class="phase-title">Cloud Security + Engineering</div>
+      <div class="phase-focus">AWS/Azure security, IAM, SIEM, SOC</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#38bdf8">AWS</span>
+        <span class="skill-tag" style="--card-color:#38bdf8">Azure</span>
+        <span class="skill-tag" style="--card-color:#38bdf8">Docker</span>
+        <span class="skill-tag" style="--card-color:#38bdf8">K8s</span>
+      </div>
+    </div>
+    <div class="phase-card" style="--card-color:#e879f9" onclick="showTab('m7')">
+      <div class="phase-num">Phase 8 · Month 7</div>
+      <div class="phase-title">Placement Preparation</div>
+      <div class="phase-focus">Resume, CTF, interviews, certifications</div>
+      <div class="phase-skills">
+        <span class="skill-tag" style="--card-color:#e879f9">Security+</span>
+        <span class="skill-tag" style="--card-color:#e879f9">CEH</span>
+        <span class="skill-tag" style="--card-color:#e879f9">OSCP</span>
+        <span class="skill-tag" style="--card-color:#e879f9">Bug Bounty</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MONTH TABS - generated by JS -->
+<div id="tab-m1" class="tab-content"></div>
+<div id="tab-m2" class="tab-content"></div>
+<div id="tab-m3" class="tab-content"></div>
+<div id="tab-m35" class="tab-content"></div>
+<div id="tab-m4" class="tab-content"></div>
+<div id="tab-m5" class="tab-content"></div>
+<div id="tab-m6" class="tab-content"></div>
+<div id="tab-m7" class="tab-content"></div>
+
+<!-- PROJECTS TAB -->
+<div id="tab-projects" class="tab-content">
+  <div class="section-header">
+    <div class="section-title">Capstone Projects</div>
+    <div class="section-badge">17 Projects</div>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</div>
+
+<!-- RESOURCES TAB -->
+<div id="tab-resources" class="tab-content">
+  <div class="section-header">
+    <div class="section-title">Free Resources Hub</div>
+    <div class="section-badge">All Free</div>
+  </div>
+  <div id="resourcesContainer"></div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const months = [
+  {
+    id: 'm1', title: 'Month 1 — Foundations', color: '#00ff88', totalDays: 30,
+    days: [
+      {day:1,ref:'Wk1-D1',topic:'Intro to Cybersecurity & Career Paths',learn:'Understand CIA Triad, types of hackers (black/white/grey hat), career paths: SOC analyst, pentester, red team, security engineer',resources:'https://www.youtube.com/watch?v=inWWhr5tnEA | https://tryhackme.com/room/beginnerpathintro',task:'Write 1-page notes on your chosen career track',lang:'–',time:'2h'},
+      {day:2,ref:'Wk1-D2',topic:'Linux Basics I',learn:'Install Ubuntu/Kali in VirtualBox. Learn: ls, cd, pwd, mkdir, rm, cp, mv, cat, less',resources:'https://www.youtube.com/watch?v=sWbUDq4S6Y8 | https://tryhackme.com/room/linuxfundamentalspart1',task:'Navigate filesystem, create/delete files from terminal',lang:'Linux CLI',time:'2h'},
+      {day:3,ref:'Wk1-D3',topic:'Linux Basics II',learn:'File permissions (chmod, chown), users/groups, sudo, passwd, man pages',resources:'https://tryhackme.com/room/linuxfundamentalspart2 | https://www.youtube.com/watch?v=GtovwKDemnI',task:'Set up a new user, assign permissions to files',lang:'Linux CLI',time:'2h'},
+      {day:4,ref:'Wk1-D4',topic:'Linux Basics III',learn:'Processes (ps, top, kill), package management (apt), cron jobs, systemctl',resources:'https://tryhackme.com/room/linuxfundamentalspart3 | https://www.youtube.com/watch?v=BghSoMOuvAI',task:'Schedule a cron job, install 3 tools via apt',lang:'Linux CLI',time:'2h'},
+      {day:5,ref:'Wk1-D5',topic:'Bash Scripting I',learn:'Variables, echo, read, if/else, loops (for/while), shebang',resources:'https://www.youtube.com/watch?v=v-F3YLd6oMw | https://www.shellscript.sh',task:'Write a bash script to automate folder creation',lang:'Bash',time:'2h'},
+      {day:6,ref:'Wk1-D6',topic:'Bash Scripting II',learn:'Functions, arrays, file I/O, grep, awk, sed, pipes',resources:'https://www.youtube.com/watch?v=GtovwKDemnI | https://overthewire.org/wargames/bandit/',task:'Write a log-parser script using grep/awk',lang:'Bash',time:'2h'},
+      {day:7,ref:'Wk1-D7',topic:'Networking Fundamentals I',learn:'OSI model (all 7 layers), TCP/IP model, protocols overview',resources:'https://www.youtube.com/watch?v=vv4y_uOneC0 | https://tryhackme.com/room/introtonetworking',task:'Draw OSI model from memory, label each layer',lang:'–',time:'2h'},
+      {day:8,ref:'Wk2-D1',topic:'Networking Fundamentals II',learn:'IP addressing, subnetting basics, CIDR notation, private vs public IPs',resources:'https://www.youtube.com/watch?v=ddM9AcreVqY | https://subnettingpractice.com',task:'Subnet 192.168.1.0/24 into 4 subnets',lang:'–',time:'2h'},
+      {day:9,ref:'Wk2-D2',topic:'Networking Fundamentals III',learn:'DNS (how it works, A/MX/CNAME records), DHCP, NAT',resources:'https://www.youtube.com/watch?v=mpQZVYPuDGU | https://tryhackme.com/room/dnsindetail',task:'Use nslookup/dig to query DNS records for 5 domains',lang:'–',time:'2h'},
+      {day:10,ref:'Wk2-D3',topic:'TCP/UDP & Ports',learn:'TCP 3-way handshake, UDP, common ports (80,443,22,21,25,3389), netstat',resources:'https://www.youtube.com/watch?v=uwoD5YsGACg | https://tryhackme.com/room/networkservices',task:'Use netstat/ss to list open ports on your VM',lang:'–',time:'2h'},
+      {day:11,ref:'Wk2-D4',topic:'HTTP/HTTPS Deep Dive',learn:'HTTP methods (GET/POST/PUT/DELETE), status codes, headers, cookies, HTTPS/TLS',resources:'https://www.youtube.com/watch?v=iYM2zFP3Zn0 | https://developer.mozilla.org/en-US/docs/Web/HTTP',task:'Use curl to make GET/POST requests, inspect headers',lang:'–',time:'2h'},
+      {day:12,ref:'Wk2-D5',topic:'Wireshark I – Basics',learn:'Install Wireshark, capture packets, filter by protocol (tcp/udp/http/dns)',resources:'https://www.youtube.com/watch?v=lb1Dw0elw0Q | https://tryhackme.com/room/wireshark101',task:'Capture HTTP traffic, find a username/password in plaintext',lang:'Wireshark',time:'2h'},
+      {day:13,ref:'Wk2-D6',topic:'Wireshark II – Analysis',learn:'TCP stream analysis, following streams, export objects, IOgraphs',resources:'https://www.youtube.com/watch?v=r0l_54thSYU | https://tryhackme.com/room/wiresharkthebasics',task:'Analyze a .pcap file and extract all HTTP requests',lang:'Wireshark',time:'2h'},
+      {day:14,ref:'Wk2-D7',topic:'Cryptography Basics',learn:'Symmetric vs asymmetric encryption, hashing (MD5, SHA256), base64, Caesar cipher',resources:'https://www.youtube.com/watch?v=AQDCe585Lnc | https://tryhackme.com/room/cryptographyforhackers',task:'Encrypt/decrypt text with base64 and openssl on CLI',lang:'Bash',time:'2h'},
+      {day:15,ref:'Wk3-D1',topic:'Git & Version Control',learn:'git init, add, commit, push, pull, clone, branching, GitHub',resources:'https://www.youtube.com/watch?v=RGOj5yH7evk | https://learngitbranching.js.org',task:'Create a GitHub repo, push your bash scripts',lang:'Git',time:'2h'},
+      {day:16,ref:'Wk3-D2',topic:'VirtualBox & Kali Linux Setup',learn:'Download Kali Linux ISO, install in VirtualBox, configure networking (NAT/Host-Only)',resources:'https://www.youtube.com/watch?v=l9jA3GWFBcE | https://www.kali.org/docs/',task:'Set up Kali with Guest Additions, create snapshots',lang:'–',time:'2h'},
+      {day:17,ref:'Wk3-D3',topic:'Kali Linux Tools Overview',learn:'Explore tools: nmap, burpsuite, metasploit, john, hashcat, aircrack-ng',resources:'https://www.youtube.com/watch?v=ElWo5fd4rIU | https://tools.kali.org/tools-listing',task:'List 20 Kali tools with 1-line descriptions',lang:'Kali',time:'2h'},
+      {day:18,ref:'Wk3-D4',topic:'Nmap – Network Scanning',learn:'nmap flags: -sS, -sV, -O, -A, -p, --script, output formats',resources:'https://www.youtube.com/watch?v=4t4kBkMsDbQ | https://tryhackme.com/room/furthernmap',task:'Scan your local network, identify all open services',lang:'Nmap',time:'2h'},
+      {day:19,ref:'Wk3-D5',topic:'OSINT Fundamentals',learn:'Google dorking, Shodan, Maltego, theHarvester, recon-ng basics',resources:'https://www.youtube.com/watch?v=qwA6MmbeGNo | https://tryhackme.com/room/ohsint',task:'Find information about a test domain using OSINT tools',lang:'OSINT',time:'2h'},
+      {day:20,ref:'Wk3-D6',topic:'Web Technologies Basics',learn:'HTML structure, CSS basics, JavaScript tags, forms, cookies, session management',resources:'https://www.youtube.com/watch?v=PlxWf493en4 | https://developer.mozilla.org/en-US/docs/Learn',task:'Build a simple HTML login page (no backend)',lang:'HTML',time:'2h'},
+      {day:21,ref:'Wk3-D7',topic:'TryHackMe – Pre-Security Path',learn:'Complete TryHackMe Pre-Security modules: Networking basics, Web basics, Linux basics',resources:'https://tryhackme.com/path/outline/presecurity | https://www.youtube.com/watch?v=mHsGBp-zOME',task:'Complete 3 TryHackMe rooms and earn badges',lang:'–',time:'2h'},
+      {day:22,ref:'Wk4-D1',topic:'Security Concepts – CIA, AAA',learn:'Confidentiality, Integrity, Availability; Authentication, Authorization, Accounting; MFA',resources:'https://www.youtube.com/watch?v=AJTJN4wDBM8 | https://tryhackme.com/room/securityawareness',task:'Write a security policy for a fictional company',lang:'–',time:'2h'},
+      {day:23,ref:'Wk4-D2',topic:'Common Vulnerabilities Overview',learn:'CVEs, CWEs, CVSS scoring, vulnerability databases (NVD, ExploitDB)',resources:'https://www.youtube.com/watch?v=F_pvjZwynZg | https://www.exploit-db.com | https://nvd.nist.gov',task:'Look up 5 high-severity CVEs and understand their impact',lang:'–',time:'2h'},
+      {day:24,ref:'Wk4-D3',topic:'Password Security & Hashing',learn:'Password cracking concepts, rainbow tables, salting, bcrypt, hashcat basics',resources:'https://www.youtube.com/watch?v=7U-RbOKanYs | https://tryhackme.com/room/passwordhacking',task:'Crack 5 MD5 hashes using hashcat/online tools',lang:'Hashcat',time:'2h'},
+      {day:25,ref:'Wk4-D4',topic:'Social Engineering',learn:'Phishing, spear phishing, pretexting, vishing, SET (Social Engineering Toolkit)',resources:'https://www.youtube.com/watch?v=lc7scxvKQOo | https://tryhackme.com/room/socialengineering',task:'Create a mock phishing awareness email (educational)',lang:'SET',time:'2h'},
+      {day:26,ref:'Wk4-D5',topic:'Firewalls & IDS/IPS',learn:'iptables basics, UFW, firewall rules, Snort IDS overview, WAF concept',resources:'https://www.youtube.com/watch?v=eO6QKDL3p1I | https://tryhackme.com/room/introtoidsips',task:'Configure iptables to block/allow specific ports',lang:'iptables',time:'2h'},
+      {day:27,ref:'Wk4-D6',topic:'VPN & Anonymity',learn:'VPN protocols (OpenVPN, WireGuard), Tor network, proxychains, anonymity concepts',resources:'https://www.youtube.com/watch?v=_wQTRMBAvzg | https://tryhackme.com/room/anonymity',task:'Set up OpenVPN client, route traffic through proxychains',lang:'Proxychains',time:'2h'},
+      {day:28,ref:'Wk4-D7',topic:'Month 1 Review + CTF',learn:'Review all Month 1 topics, attempt PicoCTF beginner challenges',resources:'https://picoctf.org | https://tryhackme.com/room/startingoutincybersec',task:'Complete 5 PicoCTF beginner challenges',lang:'–',time:'2h'},
+      {day:29,ref:'Wk4-D8',topic:'Project: Network Recon Tool',learn:'Build a bash script that: scans network with nmap, parses results, logs open ports',resources:'https://www.youtube.com/watch?v=4t4kBkMsDbQ | https://github.com/topics/network-scanner',task:'Script that auto-scans and emails report (use sendmail)',lang:'Bash',time:'2h'},
+      {day:30,ref:'Wk4-D9',topic:'Project: Capture The Flag I',learn:"Attempt TryHackMe 'Basic Pentesting' room end-to-end",resources:'https://tryhackme.com/room/basicpentestingjt | https://www.youtube.com/watch?v=xl2Xx5YOKcI',task:'Own the machine, write a full pentest report',lang:'–',time:'2h'},
+    ]
+  },
+  {
+    id: 'm2', title: 'Month 2 — Python', color: '#4ade80', totalDays: 30,
+    days: [
+      {day:31,ref:'Wk5-D1',topic:'Python Setup & Hello World',learn:"Install Python 3, VS Code, pip. print(), variables, data types (int, float, str, bool)",resources:'https://www.youtube.com/watch?v=_uQrJ0TkZlc | https://docs.python.org/3/tutorial/',task:"Write a script: ask name, print 'Hello <n>!'",lang:'Python',time:'2h'},
+      {day:32,ref:'Wk5-D2',topic:'Python – Operators & Strings',learn:'Arithmetic, comparison, logical operators; string methods (upper, lower, split, replace, format)',resources:'https://www.youtube.com/watch?v=khKv-8q7YmY | https://realpython.com/python-strings/',task:'Build a simple Caesar cipher encoder/decoder',lang:'Python',time:'2h'},
+      {day:33,ref:'Wk5-D3',topic:'Python – Lists & Tuples',learn:'List creation, indexing, slicing, append, remove, sort; tuples immutability',resources:'https://www.youtube.com/watch?v=W8KRzm-HUcc | https://docs.python.org/3/tutorial/datastructures.html',task:'Build a word-frequency counter from a text file',lang:'Python',time:'2h'},
+      {day:34,ref:'Wk5-D4',topic:'Python – Dictionaries & Sets',learn:'Dict creation, get, update, items(); sets, union, intersection, difference',resources:'https://www.youtube.com/watch?v=daefaLgNkw0 | https://realpython.com/python-dicts/',task:'Build a password-strength checker using a dict of rules',lang:'Python',time:'2h'},
+      {day:35,ref:'Wk5-D5',topic:'Python – Control Flow',learn:'if/elif/else, for loops, while loops, break/continue/pass, range()',resources:'https://www.youtube.com/watch?v=DZwmZ8Usvnk | https://www.w3schools.com/python/python_conditions.asp',task:'Write a number-guessing game',lang:'Python',time:'2h'},
+      {day:36,ref:'Wk5-D6',topic:'Python – Functions',learn:'def, parameters, return, *args, **kwargs, lambda, scope (LEGB)',resources:'https://www.youtube.com/watch?v=9Os0o3wzS_I | https://realpython.com/defining-your-own-python-function/',task:'Write a function library for common security tasks (hash, encode, decode)',lang:'Python',time:'2h'},
+      {day:37,ref:'Wk5-D7',topic:'Python – File I/O',learn:'open(), read, write, append, with statement, CSV module, JSON module',resources:'https://www.youtube.com/watch?v=Uh2ebFW8OYM | https://realpython.com/read-write-files-python/',task:'Build a log-file parser that extracts IPs from Apache logs',lang:'Python',time:'2h'},
+      {day:38,ref:'Wk6-D1',topic:'Python – Exceptions & Modules',learn:'try/except/finally, custom exceptions, importing modules, os, sys, math',resources:'https://www.youtube.com/watch?v=nlCKrKGHSSk | https://docs.python.org/3/library/exceptions.html',task:'Add proper error handling to your log-parser',lang:'Python',time:'2h'},
+      {day:39,ref:'Wk6-D2',topic:'Python – OOP I',learn:"Classes, objects, __init__, self, attributes, methods, encapsulation",resources:'https://www.youtube.com/watch?v=JeznW_7DlB0 | https://realpython.com/python3-object-oriented-programming/',task:"Create a 'Vulnerability' class with attributes (CVE, severity, description)",lang:'Python',time:'2h'},
+      {day:40,ref:'Wk6-D3',topic:'Python – OOP II',learn:'Inheritance, polymorphism, super(), dunder methods (__str__, __repr__)',resources:'https://www.youtube.com/watch?v=Ej_02ICOIgs | https://realpython.com/python-inheritance/',task:'Extend Vulnerability class with Scanner subclass',lang:'Python',time:'2h'},
+      {day:41,ref:'Wk6-D4',topic:'Python – Sockets I',learn:'socket module, TCP/UDP client, TCP server, bind/listen/accept',resources:'https://www.youtube.com/watch?v=3QiPWX-HfDo | https://realpython.com/python-sockets/',task:'Build a TCP echo server and client',lang:'Python',time:'2h'},
+      {day:42,ref:'Wk6-D5',topic:'Python – Sockets II',learn:'Multi-threaded server, sending/receiving data, banner grabbing',resources:'https://www.youtube.com/watch?v=Lbfe3-v7yE0 | https://github.com/BlackHat-Python/',task:'Build a port scanner using raw sockets',lang:'Python',time:'2h'},
+      {day:43,ref:'Wk6-D6',topic:'Python – Subprocess & OS',learn:'subprocess module, os.system, shutil, running system commands from Python',resources:'https://www.youtube.com/watch?v=2Fp1N6dof0Y | https://docs.python.org/3/library/subprocess.html',task:'Build a Python wrapper around nmap',lang:'Python',time:'2h'},
+      {day:44,ref:'Wk6-D7',topic:'Python – Regex',learn:'re module, match, search, findall, groups, common patterns (IPs, emails, URLs)',resources:'https://www.youtube.com/watch?v=K8L6KVGG-7o | https://regexr.com',task:'Build an IP extractor from raw logs using regex',lang:'Python',time:'2h'},
+      {day:45,ref:'Wk7-D1',topic:'Python – Requests & Web',learn:'requests library, GET/POST, headers, cookies, sessions, response parsing',resources:'https://www.youtube.com/watch?v=tb8gHvYlCFs | https://docs.python-requests.org',task:'Build a directory brute-forcer using requests',lang:'Python',time:'2h'},
+      {day:46,ref:'Wk7-D2',topic:'Python – BeautifulSoup',learn:'HTML parsing, find(), find_all(), CSS selectors, web scraping',resources:'https://www.youtube.com/watch?v=ng2o98k983k | https://www.crummy.com/software/BeautifulSoup/',task:'Build a tool that extracts all links from a webpage',lang:'Python',time:'2h'},
+      {day:47,ref:'Wk7-D3',topic:'Python – Threading & Async',learn:'threading module, asyncio, concurrent.futures, ThreadPoolExecutor',resources:'https://www.youtube.com/watch?v=A_Z1lgZLSNc | https://realpython.com/python-concurrency/',task:'Make your port scanner multi-threaded (10x faster)',lang:'Python',time:'2h'},
+      {day:48,ref:'Wk7-D4',topic:'Python – Scapy I',learn:'Install Scapy, packet crafting, send/receive, TCP/UDP/ICMP packets',resources:'https://www.youtube.com/watch?v=KT2Bpb8TXQQ | https://scapy.readthedocs.io',task:'Craft a custom TCP SYN packet and send it',lang:'Python/Scapy',time:'2h'},
+      {day:49,ref:'Wk7-D5',topic:'Python – Scapy II',learn:'Sniffing packets, DNS spoofing demo, ARP poisoning basics',resources:'https://www.youtube.com/watch?v=EnAnTDjSHMc | https://scapy.readthedocs.io/en/latest/usage.html',task:'Build a simple ARP scanner using Scapy',lang:'Python/Scapy',time:'2h'},
+      {day:50,ref:'Wk7-D6',topic:'Python – Cryptography Module',learn:'Fernet encryption, RSA with cryptography library, hashing, digital signatures',resources:'https://www.youtube.com/watch?v=2PPSXonhIck | https://cryptography.io/en/latest/',task:'Build a file encryptor/decryptor using Fernet',lang:'Python',time:'2h'},
+      {day:51,ref:'Wk7-D7',topic:'Python – Paramiko (SSH)',learn:'SSH client in Python, execute remote commands, SFTP, key-based auth',resources:'https://www.youtube.com/watch?v=TSQvNJPCFzw | https://www.paramiko.org',task:'Build an SSH brute-forcer with wordlist (test on your own VM)',lang:'Python',time:'2h'},
+      {day:52,ref:'Wk8-D1',topic:'Python – Offensive Basics I',learn:'Keylogger in Python (pynput), clipboard monitor, screenshot capture',resources:'https://www.youtube.com/watch?v=s2HMCHPqj-g | https://github.com/jobiaj/Python-Keylogger',task:'Build a keylogger that logs to a file (educational only)',lang:'Python',time:'2h'},
+      {day:53,ref:'Wk8-D2',topic:'Python – Offensive Basics II',learn:'Reverse shell in Python, bind shell, netcat Python equivalent',resources:'https://www.youtube.com/watch?v=Iv_vFM3QIJk | https://github.com/swisskyrepo/PayloadsAllTheThings',task:'Build a Python reverse shell (test on your own VMs only)',lang:'Python',time:'2h'},
+      {day:54,ref:'Wk8-D3',topic:'Python – Exploit Dev I',learn:'Buffer overflow concept, fuzzing in Python, pattern creation/offset',resources:'https://www.youtube.com/watch?v=1S0aBV-Waeo | https://tryhackme.com/room/bof1',task:'Write a Python fuzzer for a vulnerable service',lang:'Python',time:'2h'},
+      {day:55,ref:'Wk8-D4',topic:'Python – ctypes & C Interop',learn:'ctypes module, calling C functions from Python, loading shared libraries',resources:'https://www.youtube.com/watch?v=JU_nAPsrNGU | https://docs.python.org/3/library/ctypes.html',task:'Call a C math function from Python using ctypes',lang:'Python/C',time:'2h'},
+      {day:56,ref:'Wk8-D5',topic:'Python – Custom Security Tools',learn:'Combining skills: build a full reconnaissance tool (nmap+whois+dns+shodan)',resources:'https://www.youtube.com/watch?v=RO2hdplWBpk | https://github.com/smicallef/spiderfoot',task:'Build ReconTool v1 – takes domain, returns full intel',lang:'Python',time:'2h'},
+      {day:57,ref:'Wk8-D6',topic:'Python – Automation & Reporting',learn:'Generating PDF/HTML reports, jinja2 templates, argparse for CLI tools',resources:'https://www.youtube.com/watch?v=HdXgJZRPbzQ | https://jinja.palletsprojects.com',task:'Add report generation to your ReconTool',lang:'Python',time:'2h'},
+      {day:58,ref:'Wk8-D7',topic:'Python – APIs & JSON',learn:'REST APIs, json module, requests with auth, API key management, rate limiting',resources:'https://www.youtube.com/watch?v=GMppyAPbLYk | https://shodan.io/api-docs',task:'Integrate Shodan API into your ReconTool',lang:'Python',time:'2h'},
+      {day:59,ref:'Wk8-D8',topic:'PROJECT: Python Port Scanner',learn:'Build a full-featured port scanner: multi-threaded, service detection, banner grab, HTML report',resources:'https://github.com/topics/port-scanner-python | https://nmap.org/book/',task:'Complete port scanner with CLI flags and colored output',lang:'Python',time:'3h'},
+      {day:60,ref:'Wk8-D9',topic:'PROJECT: Python Exploit Framework',learn:'Build a mini exploit framework: module loader, target config, payload delivery',resources:'https://www.youtube.com/watch?v=ck1ZmV0VKwQ | https://github.com/rapid7/metasploit-framework',task:'Mini Metasploit-like framework with 2 exploit modules',lang:'Python',time:'3h'},
+    ]
+  },
+  {
+    id: 'm3', title: 'Month 3 — C Language', color: '#facc15', totalDays: 30,
+    days: [
+      {day:61,ref:'Wk9-D1',topic:'C – Setup & Hello World',learn:'Install GCC, VS Code C extension. Compile & run first program. #include, main(), printf',resources:'https://www.youtube.com/watch?v=KJgsSFOSQv0 | https://www.learn-c.org',task:'Write hello world, compile with gcc -o, run executable',lang:'C',time:'2h'},
+      {day:62,ref:'Wk9-D2',topic:'C – Variables & Data Types',learn:'int, char, float, double, long, unsigned, sizeof, format specifiers',resources:'https://www.youtube.com/watch?v=7odE_c_XWAU | https://www.tutorialspoint.com/cprogramming/',task:'Write a program that prints sizes of all data types',lang:'C',time:'2h'},
+      {day:63,ref:'Wk9-D3',topic:'C – Operators & Control Flow',learn:'Arithmetic/logical/bitwise operators, if/else, switch, for/while/do-while',resources:'https://www.youtube.com/watch?v=P_c9piL8pHg | https://www.learn-c.org/en/Conditions',task:'Build a menu-driven calculator in C',lang:'C',time:'2h'},
+      {day:64,ref:'Wk9-D4',topic:'C – Arrays & Strings',learn:'Arrays, multi-dim arrays, char arrays, strlen, strcpy, strcat, strcmp, sprintf',resources:'https://www.youtube.com/watch?v=8yjkWGRlUmY | https://www.learn-c.org/en/Arrays',task:'Build a student grade tracker using arrays',lang:'C',time:'2h'},
+      {day:65,ref:'Wk9-D5',topic:'C – Functions & Scope',learn:'Function declaration/definition, passing by value, return types, local vs global, recursion',resources:'https://www.youtube.com/watch?v=dX3GDev2V6s | https://www.learn-c.org/en/Functions',task:'Write recursive Fibonacci and factorial functions',lang:'C',time:'2h'},
+      {day:66,ref:'Wk9-D6',topic:'C – Pointers I',learn:'Pointer declaration, address-of (&), dereference (*), pointer arithmetic',resources:'https://www.youtube.com/watch?v=zuegQmMdy8M | https://www.youtube.com/watch?v=f2i0CnUOniA',task:'Draw memory diagrams for 5 pointer examples',lang:'C',time:'2h'},
+      {day:67,ref:'Wk9-D7',topic:'C – Pointers II',learn:'Pointers to arrays, pointer to pointer, function pointers, void pointers',resources:'https://www.youtube.com/watch?v=_fYCkzVGF4I | https://www.learn-c.org/en/Pointers',task:'Implement a function pointer table for a mini command dispatcher',lang:'C',time:'2h'},
+      {day:68,ref:'Wk10-D1',topic:'C – Dynamic Memory',learn:'malloc, calloc, realloc, free, memory leaks, Valgrind',resources:'https://www.youtube.com/watch?v=ywqB3ZTf8OE | https://valgrind.org',task:'Build a dynamic linked list in C',lang:'C',time:'2h'},
+      {day:69,ref:'Wk10-D2',topic:'C – Structures & Unions',learn:'struct definition, typedef, nested structs, unions, bit fields',resources:'https://www.youtube.com/watch?v=E4lb2gkyXr8 | https://www.learn-c.org/en/Structures',task:'Build a Packet struct that holds IP/TCP header fields',lang:'C',time:'2h'},
+      {day:70,ref:'Wk10-D3',topic:'C – File I/O',learn:'fopen, fclose, fread, fwrite, fprintf, fscanf, fseek, binary files',resources:'https://www.youtube.com/watch?v=bOF1gBhMURM | https://www.tutorialspoint.com/cprogramming/c_file_io.htm',task:'Write a C program that reads/parses a CSV log file',lang:'C',time:'2h'},
+      {day:71,ref:'Wk10-D4',topic:'C – Preprocessor & Macros',learn:'#define, #ifdef, #include, macro functions, header guards',resources:'https://www.youtube.com/watch?v=GzmVUjZ5tHU | https://gcc.gnu.org/onlinedocs/cpp/',task:'Create a debug macro system with LOG_DEBUG, LOG_ERROR',lang:'C',time:'2h'},
+      {day:72,ref:'Wk10-D5',topic:'C – Bitwise Operations',learn:'AND, OR, XOR, NOT, shift left/right, masking, flags, bit manipulation hacks',resources:'https://www.youtube.com/watch?v=ZRNO-ewsNcQ | https://graphics.stanford.edu/~seander/bithacks.html',task:'Implement XOR encryption/decryption in C',lang:'C',time:'2h'},
+      {day:73,ref:'Wk10-D6',topic:'C – Sockets I (Linux)',learn:'socket(), bind(), listen(), accept(), connect(), send(), recv()',resources:'https://www.youtube.com/watch?v=LtXEMwSG5-8 | https://beej.us/guide/bgnet/',task:'Build a TCP echo server in C',lang:'C',time:'2h'},
+      {day:74,ref:'Wk10-D7',topic:'C – Sockets II',learn:'Multi-client with fork()/threads, UDP sockets, raw sockets intro',resources:'https://www.youtube.com/watch?v=cHg2gOFkBt0 | https://beej.us/guide/bgnet/html/',task:'Build a multi-client TCP chat server in C',lang:'C',time:'2h'},
+      {day:75,ref:'Wk11-D1',topic:'C – Memory Layout',learn:'Stack vs heap, BSS, data, text segments, objdump, /proc/maps',resources:'https://www.youtube.com/watch?v=6pmWojisM_E | https://azeria-labs.com/heap-exploitation-part-1/',task:'Use objdump and /proc/maps to analyze a C binary',lang:'C',time:'2h'},
+      {day:76,ref:'Wk11-D2',topic:'C – Buffer Overflow I',learn:'Stack-based buffer overflow theory, gdb basics, stack frames, EIP/RIP control',resources:'https://www.youtube.com/watch?v=1S0aBV-Waeo | https://tryhackme.com/room/bof1',task:'Crash a vulnerable C program, find offset with gdb',lang:'C/GDB',time:'2h'},
+      {day:77,ref:'Wk11-D3',topic:'C – Buffer Overflow II',learn:'NOP sleds, shellcode basics, return address overwrite, controlling EIP',resources:'https://www.youtube.com/watch?v=T03idxny9jE | https://exploit.education/phoenix/',task:'Redirect EIP to a custom function in a vulnerable program',lang:'C/GDB',time:'2h'},
+      {day:78,ref:'Wk11-D4',topic:'C – Shellcode I',learn:'x86 assembly basics, syscalls, writing shellcode by hand, /bin/sh shellcode',resources:'https://www.youtube.com/watch?v=iyAyN3GFM7A | https://www.exploit-db.com/shellcodes',task:'Write a custom execve /bin/sh shellcode',lang:'C/ASM',time:'2h'},
+      {day:79,ref:'Wk11-D5',topic:'C – Shellcode II',learn:'Compile shellcode, test in C harness, avoid null bytes, encoder/decoder',resources:'https://www.youtube.com/watch?v=s0MoxPFW2fI | https://github.com/rapid7/metasploit-framework',task:'Build a shellcode encoder that removes null bytes',lang:'C/ASM',time:'2h'},
+      {day:80,ref:'Wk11-D6',topic:'C – Heap Exploitation Basics',learn:'malloc internals, heap chunks, use-after-free, heap spray concepts',resources:'https://www.youtube.com/watch?v=jQPcr1g8eas | https://azeria-labs.com/heap-exploitation-part-1/',task:'Study and annotate 2 heap exploit PoC programs',lang:'C',time:'2h'},
+      {day:81,ref:'Wk11-D7',topic:'C – Reverse Engineering Basics',learn:'Disassembly with objdump/gdb/Ghidra, reading assembly, finding vulnerabilities',resources:'https://www.youtube.com/watch?v=d4Pgi5XML8E | https://ghidra-sre.org',task:'Reverse-engineer a crackme binary using Ghidra',lang:'C/Ghidra',time:'2h'},
+      {day:82,ref:'Wk12-D1',topic:'C – Raw Packet Crafting',learn:'Raw sockets, IP/TCP/ICMP headers in C, custom packet builder',resources:'https://www.youtube.com/watch?v=zHM7HRtNnH0 | https://www.tcpdump.org/pcap.html',task:'Build a TCP SYN scanner in C using raw sockets',lang:'C',time:'2h'},
+      {day:83,ref:'Wk12-D2',topic:'C – Custom Tools: Port Scanner',learn:'Build a multi-threaded port scanner in C with pthreads',resources:'https://www.youtube.com/watch?v=vxn4-KaZ9Ck | https://github.com/robertdavidgraham/masscan',task:'Port scanner that scans /24 in under 5 seconds',lang:'C',time:'2h'},
+      {day:84,ref:'Wk12-D3',topic:'C – Backdoor Basics',learn:'Bind shell in C, reverse shell in C, daemonizing a process',resources:'https://www.youtube.com/watch?v=5cABEhLV4SU | https://github.com/swisskyrepo/PayloadsAllTheThings',task:'Build a bind shell in C (test on your own VM)',lang:'C',time:'2h'},
+      {day:85,ref:'Wk12-D4',topic:'C – Anti-Analysis Techniques',learn:'Anti-debugging (ptrace check), timing attacks, obfuscation basics (educational)',resources:'https://www.youtube.com/watch?v=NkuMORo1xEw | https://anti-reversing.com',task:'Add ptrace anti-debug check to your backdoor',lang:'C',time:'2h'},
+      {day:86,ref:'Wk12-D5',topic:'C – Exploit Mitigation Bypasses',learn:'ASLR, DEP/NX, Stack Canaries – how they work and bypass concepts',resources:'https://www.youtube.com/watch?v=i5-cWI_HV8o | https://ctf101.org/binary-exploitation/',task:'Bypass stack canary in a controlled lab environment',lang:'C/GDB',time:'2h'},
+      {day:87,ref:'Wk12-D6',topic:'C – Windows API Basics',learn:'WinAPI overview, WINAPI functions, CreateProcess, VirtualAlloc, WriteProcessMemory',resources:'https://www.youtube.com/watch?v=WcCq1LpELmo | https://docs.microsoft.com/en-us/windows/win32/apiindex/',task:'Build a C program that lists running Windows processes',lang:'C/WinAPI',time:'2h'},
+      {day:88,ref:'Wk12-D7',topic:'C – DLL Injection Basics',learn:'DLL injection theory, CreateRemoteThread, LoadLibrary injection method',resources:'https://www.youtube.com/watch?v=rIOTn1pvCzI | https://github.com/turla/carbanak',task:'Study DLL injection PoC code (educational analysis)',lang:'C/WinAPI',time:'2h'},
+      {day:89,ref:'Wk13-D1',topic:'PROJECT: Custom C Port Scanner + Fingerprinter',learn:'Full port scanner with OS fingerprinting using TCP/IP stack analysis',resources:'https://nmap.org/book/osdetect.html | https://github.com/robertdavidgraham/masscan',task:'Release on GitHub with README',lang:'C',time:'3h'},
+      {day:90,ref:'Wk13-D2',topic:'PROJECT: Buffer Overflow Exploit',learn:'Write a complete BoF exploit for a deliberately vulnerable C program (exploit.education)',resources:'https://exploit.education/phoenix/ | https://www.youtube.com/watch?v=1S0aBV-Waeo',task:'Full working exploit with shellcode, write a PoC report',lang:'C/ASM',time:'3h'},
+    ]
+  },
+  {
+    id: 'm35', title: 'Month 3.5 — JavaScript', color: '#fb923c', totalDays: 15,
+    days: [
+      {day:91,ref:'Wk13-D3',topic:'JS – Setup & Basics',learn:'Node.js install, browser console, variables (var/let/const), data types, typeof',resources:'https://www.youtube.com/watch?v=W6NZfCO5SIk | https://javascript.info',task:'Build a simple calculator in the browser console',lang:'JS',time:'2h'},
+      {day:92,ref:'Wk13-D4',topic:'JS – Functions & Scope',learn:'Arrow functions, callbacks, closures, hoisting, IIFE, scope chain',resources:'https://www.youtube.com/watch?v=xUI5Tsl2JpY | https://javascript.info/function-basics',task:'Build a currency converter function library',lang:'JS',time:'2h'},
+      {day:93,ref:'Wk13-D5',topic:'JS – DOM Manipulation',learn:'getElementById, querySelector, addEventListener, innerHTML, creating elements',resources:'https://www.youtube.com/watch?v=5fb2aPlgoys | https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model',task:'Build a dynamic to-do list in pure JS',lang:'JS',time:'2h'},
+      {day:94,ref:'Wk13-D6',topic:'JS – Async & Promises',learn:'setTimeout, callbacks, Promises, .then/.catch, async/await, fetch API',resources:'https://www.youtube.com/watch?v=PoRJizFvM7s | https://javascript.info/async',task:'Fetch data from a public API and display it',lang:'JS',time:'2h'},
+      {day:95,ref:'Wk13-D7',topic:'JS – Node.js & npm',learn:'Node.js runtime, npm, require/module.exports, fs module, path, http module',resources:'https://www.youtube.com/watch?v=fBNz5xF-Kx4 | https://nodejs.org/en/docs',task:'Build a simple HTTP server in Node.js',lang:'JS/Node',time:'2h'},
+      {day:96,ref:'Wk14-D1',topic:'JS – Express.js Basics',learn:'Express setup, routing, middleware, req/res, JSON APIs, Postman testing',resources:'https://www.youtube.com/watch?v=L72fhGm1yRo | https://expressjs.com/en/starter/',task:'Build a REST API with 4 endpoints',lang:'JS/Node',time:'2h'},
+      {day:97,ref:'Wk14-D2',topic:'JS – Security: XSS',learn:'What is XSS (reflected, stored, DOM), payload examples, PoC in lab',resources:'https://www.youtube.com/watch?v=EoaDgUgS6QA | https://portswigger.net/web-security/cross-site-scripting',task:'Exploit XSS in DVWA (stored and reflected)',lang:'JS',time:'2h'},
+      {day:98,ref:'Wk14-D3',topic:'JS – Security: CSRF',learn:'CSRF attack flow, tokens, SameSite cookies, CSRF PoC in lab',resources:'https://www.youtube.com/watch?v=vRBihr41JTo | https://portswigger.net/web-security/csrf',task:'Build a CSRF PoC HTML page for DVWA lab',lang:'JS/HTML',time:'2h'},
+      {day:99,ref:'Wk14-D4',topic:'JS – Security: Prototype Pollution',learn:'Prototype chain, __proto__, pollution gadgets, RCE via pollution',resources:'https://www.youtube.com/watch?v=LUsiFV3dsK8 | https://portswigger.net/research/server-side-prototype-pollution',task:'Find and exploit prototype pollution in a test app',lang:'JS',time:'2h'},
+      {day:100,ref:'Wk14-D5',topic:'JS – Security: Node.js Vulns',learn:'SSRF, path traversal, command injection in Node, insecure deserialisation',resources:'https://www.youtube.com/watch?v=xUu4CmXxPdU | https://owasp.org/www-project-node.js-goat/',task:'Set up NodeGoat and exploit 3 vulnerabilities',lang:'JS/Node',time:'2h'},
+      {day:101,ref:'Wk14-D6',topic:'JS – Building Security Tools',learn:'Build a XSS scanner in JS/Node, crawl pages, inject payloads, report',resources:'https://www.youtube.com/watch?v=rI8tNMsozo0 | https://github.com/apostrophecms/sanitize-html',task:'Build XSS-Hunt: auto-tests GET params for XSS',lang:'JS/Node',time:'2h'},
+      {day:102,ref:'Wk14-D7',topic:'JS – Puppeteer for Automation',learn:'Puppeteer headless Chrome, automate login, screenshot, form submission',resources:'https://www.youtube.com/watch?v=ARt3zDHSsd4 | https://pptr.dev',task:'Automate a login flow and screenshot with Puppeteer',lang:'JS/Node',time:'2h'},
+      {day:103,ref:'Wk15-D1',topic:'JS – WebSockets & Hacking',learn:'ws module, WebSocket security, hijacking, CSWSH attack',resources:'https://www.youtube.com/watch?v=1BfCnjr_Vjg | https://portswigger.net/web-security/websockets',task:'Intercept and modify WebSocket messages in DVWA',lang:'JS',time:'2h'},
+      {day:104,ref:'Wk15-D2',topic:'JS – Obfuscation & Deobfuscation',learn:'JSFuck, eval obfuscation, UglifyJS, deobfuscating malicious JS',resources:'https://www.youtube.com/watch?v=FeTQZKYVPh8 | https://lelinhtinh.github.io/de4js/',task:'Obfuscate a payload, then deobfuscate a sample malware JS',lang:'JS',time:'2h'},
+      {day:105,ref:'Wk15-D3',topic:'PROJECT: Full XSS Framework',learn:'Build XSSploiter: crawl site, find params, test payloads, steal cookies demo',resources:'https://github.com/hahwul/dalfox | https://portswigger.net/web-security/cross-site-scripting',task:'Working XSS scanner with cookie-stealing PoC (test env only)',lang:'JS/Python',time:'3h'},
+    ]
+  },
+  {
+    id: 'm4', title: 'Month 4 — Security Ops', color: '#f87171', totalDays: 30,
+    days: [
+      {day:106,ref:'Wk15-D4',topic:'Web App Security – OWASP Top 10',learn:'OWASP Top 10 2021: Injection, Broken Auth, XSS, IDOR, Security Misconfig',resources:'https://owasp.org/www-project-top-ten/ | https://www.youtube.com/watch?v=rWHvp7rUka8',task:'Set up DVWA on Kali, test all 10 vulnerabilities',lang:'–',time:'2h'},
+      {day:107,ref:'Wk15-D5',topic:'SQL Injection I',learn:'SQLi basics, UNION attacks, error-based, boolean-based, retrieving data',resources:'https://portswigger.net/web-security/sql-injection | https://www.youtube.com/watch?v=ciNHn38EyRc',task:'Exploit SQLi in DVWA (low/medium/high security)',lang:'SQL',time:'2h'},
+      {day:108,ref:'Wk15-D6',topic:'SQL Injection II – SQLmap',learn:'Automated SQLi with sqlmap, dumping databases, OS shell, file read/write',resources:'https://www.youtube.com/watch?v=nVj8MUKkzQk | https://sqlmap.org',task:'Use sqlmap to dump a database from a vulnerable app',lang:'SQLmap',time:'2h'},
+      {day:109,ref:'Wk15-D7',topic:'Burp Suite I',learn:'Install Burp Suite Community, proxy setup, intercepting requests, repeater',resources:'https://www.youtube.com/watch?v=G3hpAeoZ4ek | https://portswigger.net/burp/documentation',task:'Intercept and modify a login request in DVWA',lang:'Burp Suite',time:'2h'},
+      {day:110,ref:'Wk16-D1',topic:'Burp Suite II – Intruder & Scanner',learn:'Intruder for fuzzing, cluster bomb/sniper attacks, Active Scanner',resources:'https://www.youtube.com/watch?v=5n29qAMxRGo | https://portswigger.net/web-security',task:'Brute-force DVWA login with Burp Intruder',lang:'Burp Suite',time:'2h'},
+      {day:111,ref:'Wk16-D2',topic:'Metasploit Framework I',learn:'msfconsole, search, use, show options, set, run, sessions',resources:'https://www.youtube.com/watch?v=8lR27r8Y_ik | https://tryhackme.com/room/metasploitintro',task:'Exploit MS17-010 (EternalBlue) on a vulnerable Windows VM',lang:'Metasploit',time:'2h'},
+      {day:112,ref:'Wk16-D3',topic:'Metasploit Framework II',learn:'Meterpreter, post-exploitation modules, hashdump, keylogger, persistence',resources:'https://www.youtube.com/watch?v=QynUOJanNqo | https://tryhackme.com/room/meterpreter',task:'Complete a full Metasploit chain: exploit → Meterpreter → dump hashes',lang:'Metasploit',time:'2h'},
+      {day:113,ref:'Wk16-D4',topic:'Password Attacks',learn:'John the Ripper, hashcat modes, wordlists (rockyou), rules, rainbow tables',resources:'https://www.youtube.com/watch?v=XjVYl1Ts6XI | https://tryhackme.com/room/passwordattacks',task:'Crack MD5, SHA1, NTLM hashes using hashcat + rockyou',lang:'Hashcat/John',time:'2h'},
+      {day:114,ref:'Wk16-D5',topic:'Privilege Escalation – Linux',learn:'SUID binaries, sudo misconfigs, writable cron, PATH hijack, GTFOBins',resources:'https://www.youtube.com/watch?v=DkHjNMSEqG8 | https://tryhackme.com/room/linuxprivesc | https://gtfobins.github.io',task:'Complete TryHackMe Linux PrivEsc room',lang:'–',time:'2h'},
+      {day:115,ref:'Wk16-D6',topic:'Privilege Escalation – Windows',learn:'AlwaysInstallElevated, unquoted paths, token impersonation, PrintSpoofer',resources:'https://www.youtube.com/watch?v=jZEnuHB-aNs | https://tryhackme.com/room/windows10privesc',task:'Complete TryHackMe Windows PrivEsc room',lang:'–',time:'2h'},
+      {day:116,ref:'Wk16-D7',topic:'Active Directory Basics',learn:'AD structure, DC, users/groups/OUs, LDAP, Kerberos authentication flow',resources:'https://www.youtube.com/watch?v=85-bp7XxWDQ | https://tryhackme.com/room/activedirectorybasics',task:'Set up a mini AD lab with two VMs',lang:'AD',time:'2h'},
+      {day:117,ref:'Wk17-D1',topic:'Active Directory Attacks I',learn:'Kerberoasting, AS-REP Roasting, password spraying, BloodHound',resources:'https://www.youtube.com/watch?v=jUc1J31DNdw | https://tryhackme.com/room/attackingkerberos',task:'Run BloodHound on your AD lab, find attack paths',lang:'AD/BloodHound',time:'2h'},
+      {day:118,ref:'Wk17-D2',topic:'Active Directory Attacks II',learn:'Pass-the-Hash, Pass-the-Ticket, DCSync, Golden Ticket, Silver Ticket',resources:'https://www.youtube.com/watch?v=sAXeA5hW0qQ | https://github.com/gentilkiwi/mimikatz',task:'Use Mimikatz for Pass-the-Hash in your lab',lang:'Mimikatz',time:'2h'},
+      {day:119,ref:'Wk17-D3',topic:'Web App – LFI/RFI & Path Traversal',learn:'LFI exploitation, log poisoning, PHP wrapper bypass, RFI setup',resources:'https://www.youtube.com/watch?v=ZEMoM-yZcwE | https://portswigger.net/web-security/file-path-traversal',task:'Exploit LFI to read /etc/passwd, then achieve RCE',lang:'–',time:'2h'},
+      {day:120,ref:'Wk17-D4',topic:'Web App – SSRF & XXE',learn:'SSRF attack flows, internal service access; XXE payload injection',resources:'https://portswigger.net/web-security/ssrf | https://portswigger.net/web-security/xxe',task:'Exploit SSRF and XXE in PortSwigger labs (free)',lang:'–',time:'2h'},
+      {day:121,ref:'Wk17-D5',topic:'Web App – Authentication Attacks',learn:'JWT attacks, session fixation, cookie theft, IDOR, BOLA',resources:'https://portswigger.net/web-security/authentication | https://jwt.io',task:'Crack a weak JWT secret, forge admin token',lang:'–',time:'2h'},
+      {day:122,ref:'Wk17-D6',topic:'Web App – IDOR & API Hacking',learn:'IDOR exploitation, API endpoint enumeration, GraphQL attacks',resources:'https://portswigger.net/web-security/access-control/idor | https://tryhackme.com/room/apihacking',task:'Find and exploit IDOR in a vulnerable API lab',lang:'–',time:'2h'},
+      {day:123,ref:'Wk17-D7',topic:'Wireless Security',learn:'WPA2 cracking (4-way handshake), WPS attacks, evil twin, deauth attack',resources:'https://www.youtube.com/watch?v=WfYxrLaqlN8 | https://tryhackme.com/room/wifihacking101',task:'Capture WPA2 handshake and crack with hashcat',lang:'Aircrack-ng',time:'2h'},
+      {day:124,ref:'Wk18-D1',topic:'Network Pivoting & Tunneling',learn:'SSH tunneling, chisel, sshuttle, proxychains, network pivoting techniques',resources:'https://www.youtube.com/watch?v=OU5EDRm4aPY | https://tryhackme.com/room/wreath',task:'Set up a multi-hop pivot lab using VMs',lang:'–',time:'2h'},
+      {day:125,ref:'Wk18-D2',topic:'Forensics & Incident Response',learn:'Memory forensics (Volatility), disk forensics (Autopsy), log analysis',resources:'https://www.youtube.com/watch?v=LaFB9pDa_aI | https://tryhackme.com/room/memoryforensics',task:'Analyze a memory dump with Volatility, find malware',lang:'Volatility',time:'2h'},
+      {day:126,ref:'Wk18-D3',topic:'Malware Analysis Basics',learn:'Static analysis (strings, file, hexdump), dynamic (sandbox), YARA rules',resources:'https://www.youtube.com/watch?v=wBMl2Hf9bBM | https://app.any.run | https://www.virustotal.com',task:'Analyze a malware sample statically with Ghidra + strings',lang:'Ghidra',time:'2h'},
+      {day:127,ref:'Wk18-D4',topic:'SIEM Basics – Splunk',learn:'Splunk free trial, ingesting logs, SPL queries, dashboards, alerts',resources:'https://www.youtube.com/watch?v=SSHBVsC5K4M | https://tryhackme.com/room/splunk101',task:'Build a Splunk dashboard showing failed login attempts',lang:'Splunk',time:'2h'},
+      {day:128,ref:'Wk18-D5',topic:'Threat Intelligence',learn:'MITRE ATT&CK framework, threat intel feeds, IOCs, TTPs, threat hunting',resources:'https://attack.mitre.org | https://www.youtube.com/watch?v=5h5JGsNfL-s',task:"Map a real APT's TTPs to MITRE ATT&CK",lang:'–',time:'2h'},
+      {day:129,ref:'Wk18-D6',topic:'Vulnerability Assessment',learn:'Nessus (free), OpenVAS, vulnerability reports, CVSS scoring, remediation',resources:'https://www.youtube.com/watch?v=e_vxrA9XaYI | https://www.openvas.org',task:'Run OpenVAS against your lab, generate report',lang:'OpenVAS',time:'2h'},
+      {day:130,ref:'Wk18-D7',topic:'PROJECT: Full Web App Pentest',learn:'Pentest DVWA/VulnHub machine end-to-end: recon → exploit → report',resources:'https://www.vulnhub.com/entry/mr-robot-1,151/ | https://www.youtube.com/watch?v=wR0GWNBlMtI',task:'Complete Mr. Robot VulnHub machine, write professional report',lang:'–',time:'3h'},
+      {day:131,ref:'Wk19-D1',topic:'PROJECT: AD Attack Chain',learn:'Full AD attack: recon → Kerberoasting → lateral movement → Domain Admin',resources:'https://tryhackme.com/room/attacktivedirectory | https://www.youtube.com/watch?v=MIt-tIjMDaA',task:'Own the domain in TryHackMe AttackTive Directory room',lang:'–',time:'3h'},
+      {day:132,ref:'Wk19-D2',topic:'HackTheBox – Easy Machine',learn:'Attempt an Easy rated HackTheBox machine (retired, with writeup access)',resources:'https://www.hackthebox.com | https://www.youtube.com/c/IppSec',task:'Own user + root on an Easy HackTheBox machine',lang:'–',time:'2h'},
+      {day:133,ref:'Wk19-D3',topic:'HackTheBox – Medium Machine',learn:'Attempt a Medium HTB machine using skills learned so far',resources:'https://www.hackthebox.com | https://ippsec.rocks',task:'Own a Medium HTB machine (or reach user flag)',lang:'–',time:'2h'},
+      {day:134,ref:'Wk19-D4',topic:'CTF – Web Challenges',learn:'Solve 5 web-focused CTF challenges (PicoCTF, CTFtime)',resources:'https://picoctf.org | https://ctftime.org | https://pwn.college',task:'Write-up 5 web CTF challenges with methodology',lang:'–',time:'2h'},
+      {day:135,ref:'Wk19-D5',topic:'Month 4 Review & Gap Analysis',learn:'Review all topics, identify weak areas, revisit struggling topics',resources:'https://tryhackme.com/paths | https://roadmap.sh/cyber-security',task:'Create a personal skills gap analysis document',lang:'–',time:'2h'},
+    ]
+  },
+  {
+    id: 'm5', title: 'Month 5 — Red Team', color: '#a855f7', totalDays: 30,
+    days: [
+      {day:136,ref:'Wk20-D1',topic:'Red Team Operations Intro',learn:'Red team vs pentest vs bug bounty, rules of engagement, OPSEC, kill chain',resources:'https://www.youtube.com/watch?v=cRbHIB4BvMs | https://tryhackme.com/room/redteamfundamentals',task:'Create a mock Rules of Engagement document',lang:'–',time:'2h'},
+      {day:137,ref:'Wk20-D2',topic:'C2 Frameworks – Cobalt Strike Concepts',learn:'C2 architecture, beacon, listeners, malleable profiles (free: Sliver, Havoc)',resources:'https://www.youtube.com/watch?v=Zc8bVDLpHus | https://github.com/BishopFox/sliver',task:'Set up Sliver C2, create a beacon, get callback',lang:'Sliver',time:'2h'},
+      {day:138,ref:'Wk20-D3',topic:'Custom Payload Development I',learn:'PE format, shellcode injection, process hollowing concepts in C',resources:'https://www.youtube.com/watch?v=aNEqC-U5tHM | https://github.com/chvancooten/maldev-for-dummies',task:'Write a shellcode injector in C (educational lab)',lang:'C',time:'2h'},
+      {day:139,ref:'Wk20-D4',topic:'Custom Payload Development II',learn:'AV evasion basics: obfuscation, encryption, reflective DLL, AMSI bypass',resources:'https://www.youtube.com/watch?v=9pwMCHlNma4 | https://github.com/optiv/ScareCrow',task:'Test payload against Windows Defender in a VM',lang:'C/Python',time:'2h'},
+      {day:140,ref:'Wk20-D5',topic:'Phishing Campaigns',learn:'GoPhish setup, email spoofing, HTML email lures, credential harvesting',resources:'https://www.youtube.com/watch?v=S6S5JF6Gou0 | https://getgophish.com',task:'Set up GoPhish, send test phishing email to yourself',lang:'GoPhish',time:'2h'},
+      {day:141,ref:'Wk20-D6',topic:'Lateral Movement',learn:'SMB, WMI, PsExec, WinRM, RDP, CrackMapExec, BloodHound paths',resources:'https://www.youtube.com/watch?v=nJ0UsyiUEqQ | https://github.com/byt3bl33d3r/CrackMapExec',task:'Use CrackMapExec to move laterally in your AD lab',lang:'CME',time:'2h'},
+      {day:142,ref:'Wk20-D7',topic:'Persistence Techniques',learn:'Registry run keys, scheduled tasks, WMI subscriptions, DLL hijacking',resources:'https://www.youtube.com/watch?v=c4Hp_OEmCfY | https://attack.mitre.org/tactics/TA0003/',task:'Implement 3 persistence mechanisms in your lab',lang:'–',time:'2h'},
+      {day:143,ref:'Wk21-D1',topic:'Defense Evasion',learn:'Living off the Land (LOLBins), obfuscation, timestomping, log clearing',resources:'https://www.youtube.com/watch?v=J97z3dKFgXM | https://lolbas-project.github.io',task:'Perform a LOLBin-based attack chain in your lab',lang:'–',time:'2h'},
+      {day:144,ref:'Wk21-D2',topic:'Data Exfiltration',learn:'DNS exfiltration, ICMP tunneling, HTTP exfil, cloud storage drop',resources:'https://www.youtube.com/watch?v=v95SBQ3Qvts | https://github.com/iagox86/dnscat2',task:'Set up dnscat2 for DNS-based exfiltration in lab',lang:'Python/C',time:'2h'},
+      {day:145,ref:'Wk21-D3',topic:'Exploit Development – ROP Chains',learn:'Return-Oriented Programming, gadgets, ROPgadget tool, bypassing NX/DEP',resources:'https://www.youtube.com/watch?v=zaQVNM3or9k | https://github.com/JonathanSalwan/ROPgadget',task:'Write a ROP chain exploit for a 64-bit binary',lang:'C/Python',time:'2h'},
+      {day:146,ref:'Wk21-D4',topic:'Heap Exploitation',learn:'fastbin dup, tcache poisoning, house of spirit, glibc heap',resources:'https://www.youtube.com/watch?v=OwQk9Ti4mg4 | https://pwn.college',task:'Complete pwn.college heap exploitation module',lang:'C/Python',time:'2h'},
+      {day:147,ref:'Wk21-D5',topic:'Kernel Exploitation Basics',learn:'Kernel modules, /dev/suid, null pointer dereference, privilege escalation',resources:'https://www.youtube.com/watch?v=YwNpTUaJE0g | https://pwn.college/system-security/kernel-security.html',task:'Exploit a kernel vulnerability in a controlled VM',lang:'C',time:'2h'},
+      {day:148,ref:'Wk21-D6',topic:'Web – Advanced SQL Injection',learn:'Second-order SQLi, time-based blind, WAF bypass, stacked queries, OOB',resources:'https://portswigger.net/web-security/sql-injection/blind | https://www.youtube.com/watch?v=cx6Xs3F_1Uc',task:'Complete all PortSwigger SQLi labs (blind + advanced)',lang:'SQLmap/Manual',time:'2h'},
+      {day:149,ref:'Wk21-D7',topic:'Web – SSTI & Deserialization',learn:'Server-Side Template Injection (Jinja2, Twig), Java/PHP deserialization RCE',resources:'https://portswigger.net/web-security/server-side-template-injection | https://www.youtube.com/watch?v=SN6EVIG4c-0',task:'Exploit SSTI in PortSwigger labs, get RCE',lang:'–',time:'2h'},
+      {day:150,ref:'Wk22-D1',topic:'Browser Exploitation Basics',learn:'Browser bug classes, JSFuck, sandbox escapes (conceptual), BeEF framework',resources:'https://www.youtube.com/watch?v=5tediW3MMf8 | https://beefproject.com',task:'Hook a browser with BeEF and run social engineering modules',lang:'BeEF/JS',time:'2h'},
+      {day:151,ref:'Wk22-D2',topic:'Mobile Security Basics',learn:'Android APK reverse engineering, MobSF, adb, common mobile vulns (OWASP MASVS)',resources:'https://www.youtube.com/watch?v=E2b-ADgHiEU | https://github.com/MobSF/Mobile-Security-Framework-MobSF',task:'Analyze an Android APK with MobSF, find hardcoded secrets',lang:'MobSF',time:'2h'},
+      {day:152,ref:'Wk22-D3',topic:'IoT Security',learn:'IoT attack surface, UART/JTAG, firmware extraction, Binwalk, default creds',resources:'https://www.youtube.com/watch?v=N2dBLp3UMgU | https://github.com/ReFirmLabs/binwalk',task:'Extract and analyze firmware from a download using Binwalk',lang:'Binwalk',time:'2h'},
+      {day:153,ref:'Wk22-D4',topic:'Custom Exploit: Python BoF Script',learn:'Write a complete Python exploit script for a real CVE (use exploit.education)',resources:'https://www.youtube.com/watch?v=HSlhY4Uy8SA | https://exploit.education',task:'Python script: fuzz → find offset → inject shellcode → shell',lang:'Python',time:'2h'},
+      {day:154,ref:'Wk22-D5',topic:'Building Custom C2 in Python',learn:'Build a minimal C2: server (Flask), agent (Python), encrypted comms (AES)',resources:'https://www.youtube.com/watch?v=DKRW9FSPXT8 | https://github.com/topics/c2-framework',task:'Working Python C2 with AES-encrypted callbacks',lang:'Python',time:'3h'},
+      {day:155,ref:'Wk22-D6',topic:'Building Custom C2 in C',learn:'Translate C2 agent to C: WinAPI HTTP beacon, AES encryption, persistence',resources:'https://www.youtube.com/watch?v=dkEBRnQRlW4 | https://github.com/maldev-for-dummies',task:'C-based beacon that beacons back every 60s',lang:'C',time:'3h'},
+      {day:156,ref:'Wk22-D7',topic:'OSCP Methodology Practice',learn:'OSCP methodology: structured enumeration, exploitation, PrivEsc, reporting',resources:'https://www.offensive-security.com/pwk-oscp/ | https://tryhackme.com/room/learningpathway',task:'Complete a full machine using strict OSCP methodology',lang:'–',time:'2h'},
+      {day:157,ref:'Wk23-D1',topic:'HackTheBox – Hard Machine',learn:'Attempt a Hard HTB retired machine',resources:'https://www.hackthebox.com | https://ippsec.rocks',task:'Own user + root on a Hard HTB machine',lang:'–',time:'2h'},
+      {day:158,ref:'Wk23-D2',topic:'PWN College – Binary Exploitation',learn:'Work through pwn.college binary exploitation challenges',resources:'https://pwn.college | https://dojo.pwn.college/',task:'Complete 10 pwn.college binary challenges',lang:'Python/C',time:'2h'},
+      {day:159,ref:'Wk23-D3',topic:'VulnHub – Advanced Machines',learn:'Multiple VulnHub machines back-to-back (Kioptrix series)',resources:'https://www.vulnhub.com/series/kioptrix,8/ | https://www.youtube.com/watch?v=XItugSBETxY',task:'Own 3 Kioptrix machines in one session',lang:'–',time:'2h'},
+      {day:160,ref:'Wk23-D4',topic:'Bug Bounty Hunting Intro',learn:'HackerOne/Bugcrowd programs, recon methodology, reporting, Hall of Fame',resources:'https://www.youtube.com/watch?v=7M6PRIa5oO0 | https://www.hackerone.com/hackers/hacker101',task:'Set up HackerOne account, read 5 disclosed reports',lang:'–',time:'2h'},
+      {day:161,ref:'Wk23-D5',topic:'Threat Modeling',learn:'STRIDE, DREAD, attack trees, data flow diagrams, trust boundaries',resources:'https://www.youtube.com/watch?v=GqmQg-cszw4 | https://owasp.org/www-community/Threat_Modeling',task:'Threat model a sample web application using STRIDE',lang:'–',time:'2h'},
+      {day:162,ref:'Wk23-D6',topic:'Secure Code Review',learn:'Code review for security bugs: injection, auth bypass, race conditions',resources:'https://www.youtube.com/watch?v=Heor8BVa4A0 | https://owasp.org/www-pdf-archive/OWASP_Code_Review_Guide_v2.pdf',task:'Review 3 open-source repos for security vulnerabilities',lang:'–',time:'2h'},
+      {day:163,ref:'Wk23-D7',topic:'PROJECT: Full Red Team Simulation',learn:'Simulate a full red team op on your home lab: phish → C2 → pivot → DC',resources:'https://github.com/mantvydasb/RedTeaming-Tactics-and-Techniques | https://www.youtube.com/watch?v=obFOFDm0BFk',task:'Full red team report with MITRE ATT&CK mapping',lang:'–',time:'3h'},
+      {day:164,ref:'Wk24-D1',topic:'PROJECT: Custom Offensive Tool',learn:'Build a tool: subdomain takeover checker, JWT cracker, or S3 bucket scanner',resources:'https://github.com/EdOverflow/can-i-take-over-xyz | https://github.com/ticarpi/jwt_tool',task:'Publish tool on GitHub with full documentation',lang:'Python',time:'3h'},
+      {day:165,ref:'Wk24-D2',topic:'Month 5 Review + CTF Day',learn:'Review, attempt CTFtime.org active competition',resources:'https://ctftime.org | https://picoctf.org',task:'Participate in a live CTF, submit at least 3 flags',lang:'–',time:'2h'},
+    ]
+  },
+  {
+    id: 'm6', title: 'Month 6 — Cloud Security', color: '#38bdf8', totalDays: 15,
+    days: [
+      {day:166,ref:'Wk24-D3',topic:'Cloud Security Intro',learn:'Cloud models (IaaS/PaaS/SaaS), shared responsibility model, major providers',resources:'https://www.youtube.com/watch?v=M988_fsOSWo | https://tryhackme.com/room/introtocloud',task:'Draw the shared responsibility model for AWS, Azure, GCP',lang:'–',time:'2h'},
+      {day:167,ref:'Wk24-D4',topic:'AWS Security Fundamentals',learn:'IAM (users/roles/policies), S3 security, VPC, security groups, CloudTrail',resources:'https://www.youtube.com/watch?v=Ia-UEYYR44s | https://tryhackme.com/room/awsfundamentals | https://aws.amazon.com/training/',task:'Create an AWS free-tier account, set up least-privilege IAM',lang:'AWS',time:'2h'},
+      {day:168,ref:'Wk24-D5',topic:'AWS Attacks & Cloud Pentesting',learn:'CloudGoat, Pacu framework, IAM privilege escalation, metadata SSRF',resources:'https://www.youtube.com/watch?v=yMlBpTkRHbg | https://github.com/RhinoSecurityLabs/cloudgoat',task:'Deploy CloudGoat lab, exploit IAM privilege escalation',lang:'AWS/Pacu',time:'2h'},
+      {day:169,ref:'Wk24-D6',topic:'Azure Security',learn:'Azure AD, RBAC, Key Vault, Defender for Cloud, Sentinel SIEM',resources:'https://www.youtube.com/watch?v=NKEFWyqJ5XA | https://docs.microsoft.com/en-us/azure/security/',task:'Set up Azure free account, configure Defender for Cloud',lang:'Azure',time:'2h'},
+      {day:170,ref:'Wk24-D7',topic:'GCP Security',learn:'GCP IAM, Cloud Armor, VPC Service Controls, Security Command Center',resources:'https://www.youtube.com/watch?v=JtUIQz_EkUw | https://cloud.google.com/security',task:'Compare IAM policies across AWS/Azure/GCP',lang:'GCP',time:'2h'},
+      {day:171,ref:'Wk25-D1',topic:'Container Security (Docker)',learn:'Docker security: image scanning, non-root, capabilities, seccomp, AppArmor',resources:'https://www.youtube.com/watch?v=KINjI1tlo2w | https://tryhackme.com/room/dockerrodeo',task:'Escape a Docker container in a CTF challenge',lang:'Docker',time:'2h'},
+      {day:172,ref:'Wk25-D2',topic:'Kubernetes Security',learn:'K8s RBAC, PodSecurityPolicies, network policies, etcd security, k8s attacks',resources:'https://www.youtube.com/watch?v=UdMFTdeAL1s | https://kubernetes.io/docs/concepts/security/',task:'Deploy a mini K8s cluster, apply network policies',lang:'K8s',time:'2h'},
+      {day:173,ref:'Wk25-D3',topic:'CI/CD Pipeline Security',learn:'GitHub Actions security, secrets management, SAST/DAST in pipelines, supply chain',resources:'https://www.youtube.com/watch?v=M1nJLBfxBBs | https://trufflesecurity.com/blog/',task:'Find secrets in a GitHub repo using truffleHog',lang:'DevSecOps',time:'2h'},
+      {day:174,ref:'Wk25-D4',topic:'Infrastructure as Code Security',learn:'Terraform security, Checkov, tfsec, CloudFormation security pitfalls',resources:'https://www.youtube.com/watch?v=7xngnjfIlK4 | https://www.checkov.io',task:'Run Checkov on sample Terraform code, fix findings',lang:'Terraform',time:'2h'},
+      {day:175,ref:'Wk25-D5',topic:'Security Engineering – SDLC',learn:'Secure SDLC, threat modeling in design, security requirements, shift-left',resources:'https://www.youtube.com/watch?v=ZKFpuWKRDc0 | https://owasp.org/www-project-devsecops-guideline/',task:'Write security requirements for a sample application',lang:'–',time:'2h'},
+      {day:176,ref:'Wk25-D6',topic:'SIEM & SOC Operations',learn:'ELK Stack setup, log ingestion, detection rules, incident response workflow',resources:'https://www.youtube.com/watch?v=ZKFpuWKRDc0 | https://tryhackme.com/room/splunk2',task:'Deploy ELK Stack, ingest logs, write 3 detection rules',lang:'ELK/Splunk',time:'2h'},
+      {day:177,ref:'Wk25-D7',topic:'Defensive Tools & Hardening',learn:'CIS Benchmarks, OS hardening (Linux/Windows), endpoint detection, YARA',resources:'https://www.cisecurity.org/cis-benchmarks | https://www.youtube.com/watch?v=bOw9AblKlmY',task:'Harden a Linux server using CIS Level 1 benchmark',lang:'–',time:'2h'},
+      {day:178,ref:'Wk26-D1',topic:'Zero Trust Architecture',learn:'Zero Trust principles, BeyondCorp, microsegmentation, identity-first security',resources:'https://www.youtube.com/watch?v=yn4s_zFxoqw | https://www.nist.gov/publications/zero-trust-architecture',task:'Design a Zero Trust architecture for a sample company',lang:'–',time:'2h'},
+      {day:179,ref:'Wk26-D2',topic:'Compliance & Frameworks',learn:'ISO 27001, SOC 2, NIST CSF, GDPR, PCI-DSS – what each requires',resources:'https://www.youtube.com/watch?v=Q0NQUaVfzYI | https://www.nist.gov/cyberframework',task:'Map controls from NIST CSF to a sample environment',lang:'–',time:'2h'},
+      {day:180,ref:'Wk26-D3',topic:'PROJECT: Cloud Security Audit',learn:'Audit an AWS environment using Scout Suite / Prowler, generate report',resources:'https://github.com/nccgroup/ScoutSuite | https://github.com/prowler-cloud/prowler',task:'Full cloud security audit report with remediation steps',lang:'AWS/Python',time:'3h'},
+    ]
+  },
+  {
+    id: 'm7', title: 'Month 7 — Placement Prep', color: '#e879f9', totalDays: 30,
+    days: [
+      {day:181,ref:'Wk27-D1',topic:'Resume Building for Cybersecurity',learn:'Tailoring resume for security roles, ATS optimization, GitHub profile cleanup',resources:'https://www.youtube.com/watch?v=aKjsy-b00QM | https://resume.io',task:'Draft your cybersecurity resume with all 6-month projects',lang:'–',time:'2h'},
+      {day:182,ref:'Wk27-D2',topic:'LinkedIn & Personal Brand',learn:'LinkedIn profile optimization, posting content, connecting with security folks',resources:'https://www.youtube.com/watch?v=SG5H7JqEZvo | https://www.linkedin.com',task:'Complete LinkedIn profile, post about a project',lang:'–',time:'2h'},
+      {day:183,ref:'Wk27-D3',topic:'GitHub Portfolio',learn:'Organize all projects on GitHub: READMEs, screenshots, documentation',resources:'https://www.youtube.com/watch?v=RGOj5yH7evk | https://pages.github.com',task:'Create a GitHub Pages portfolio site',lang:'–',time:'2h'},
+      {day:184,ref:'Wk27-D4',topic:'Certification Roadmap',learn:'CompTIA Security+, CEH, OSCP, AWS Security, CISSP – which, when, why',resources:'https://www.youtube.com/watch?v=ZQpBz9QH9Kg | https://pauljerimy.com/security-certification-roadmap/',task:'Create a 1-year certification plan with costs/timelines',lang:'–',time:'2h'},
+      {day:185,ref:'Wk27-D5',topic:'CompTIA Security+ Prep I',learn:'Domain 1: Threats, Attacks & Vulnerabilities; Domain 2: Architecture',resources:'https://www.youtube.com/watch?v=9NE33fpQuw8 | https://www.professormesser.com/security-plus/',task:'Complete 50 practice questions, score and review mistakes',lang:'–',time:'2h'},
+      {day:186,ref:'Wk27-D6',topic:'CompTIA Security+ Prep II',learn:'Domain 3: Implementation; Domain 4: Operations & Incident Response',resources:'https://www.professormesser.com/security-plus/ | https://quizlet.com/subject/security%2B/',task:'Complete 50 more practice questions',lang:'–',time:'2h'},
+      {day:187,ref:'Wk27-D7',topic:'CompTIA Security+ Prep III',learn:'Domain 5: Governance, Risk & Compliance; full practice exam',resources:'https://www.professormesser.com/security-plus/ | https://www.examcompass.com',task:'Full 90-question mock exam, target 80%+ score',lang:'–',time:'2h'},
+      {day:188,ref:'Wk28-D1',topic:'Interview Prep – Technical I',learn:'Common technical questions: OSI model, common ports, CIA triad, encryption types',resources:'https://www.youtube.com/watch?v=7YMVzF0bOTE | https://github.com/topics/cybersecurity-interview',task:'Answer 20 common security technical questions out loud',lang:'–',time:'2h'},
+      {day:189,ref:'Wk28-D2',topic:'Interview Prep – Technical II',learn:'Pentesting questions: methodology, tools, buffer overflow, SQL injection, XSS',resources:'https://www.youtube.com/watch?v=bFsGxqMWLFA | https://github.com/gracenolan/Notes/blob/master/interview-study-notes-for-security-engineer.md',task:'Prepare written answers to 20 pentest interview questions',lang:'–',time:'2h'},
+      {day:190,ref:'Wk28-D3',topic:'Interview Prep – Technical III',learn:'Security engineering: SDLC, threat modeling, secure design, cloud security',resources:'https://www.youtube.com/watch?v=ZRtFDDDkUFo | https://www.levels.fyi/blog/security-engineer-interview.html',task:'Mock interview with a friend or record yourself',lang:'–',time:'2h'},
+      {day:191,ref:'Wk28-D4',topic:'Interview Prep – Behavioral',learn:"STAR method, 'tell me about yourself', motivation, conflict resolution",resources:'https://www.youtube.com/watch?v=PJKYqLP6MRE | https://www.thebalancecareers.com/behavioral-interview-questions-2059620',task:'Record video answers to 10 behavioral questions',lang:'–',time:'2h'},
+      {day:192,ref:'Wk28-D5',topic:'CTF Competition Practice',learn:'Join a live CTF (ctftime.org), attempt pwn/web/crypto/forensics categories',resources:'https://ctftime.org | https://picoctf.org | https://pwn.college',task:'Submit at least 3 flags, write CTF writeup blog post',lang:'–',time:'2h'},
+      {day:193,ref:'Wk28-D6',topic:'HackTheBox – ProLabs Intro',learn:'Start HTB Pro Lab (or Offshore) / or attempt 5 machines in a day',resources:'https://www.hackthebox.com/hacker/pro-labs | https://tryhackme.com/paths',task:'Own 5 machines, document methodology',lang:'–',time:'2h'},
+      {day:194,ref:'Wk28-D7',topic:'OSCP Exam Prep – Strategy',learn:'OSCP exam strategy, time management, reporting format, common pitfalls',resources:'https://www.youtube.com/watch?v=lYLGl0mG6vs | https://www.offensive-security.com/pwk-oscp/',task:'Create your OSCP exam cheat sheet and methodology doc',lang:'–',time:'2h'},
+      {day:195,ref:'Wk29-D1',topic:'Networking with Security Community',learn:'Twitter/X security community, Discord servers (TryHackMe, HTB, OWASP)',resources:'https://twitter.com/search?q=%23bugbounty | https://discord.gg/tryhackme',task:'Introduce yourself in 3 security Discord servers',lang:'–',time:'2h'},
+      {day:196,ref:'Wk29-D2',topic:'Bug Bounty – First Report',learn:'Write a complete vulnerability report for a test finding (HackerOne sandbox)',resources:'https://www.hacker101.com | https://www.youtube.com/watch?v=7M6PRIa5oO0',task:'Submit your first bug bounty report (even to HackerOne sandbox)',lang:'–',time:'2h'},
+      {day:197,ref:'Wk29-D3',topic:'Salary Research & Job Market',learn:'Average salaries by role and region, remote vs onsite, contract vs perm',resources:'https://www.glassdoor.com | https://www.levels.fyi | https://www.payscale.com',task:'Create a spreadsheet comparing roles, salaries, requirements',lang:'–',time:'2h'},
+      {day:198,ref:'Wk29-D4',topic:'Job Application Strategy',learn:'Tailoring applications, cold emailing, referrals, security job boards',resources:'https://www.cybersecjobs.com | https://www.infosec-jobs.com | https://www.linkedin.com/jobs/',task:'Apply to 10 positions, customize each application',lang:'–',time:'2h'},
+      {day:199,ref:'Wk29-D5',topic:"Technical Take-Home Project",learn:"Simulate a common take-home: 'pentest this web app and report findings'",resources:'https://www.hackthebox.com | https://tryhackme.com',task:'Write a professional pentest report from a take-home sim',lang:'–',time:'2h'},
+      {day:200,ref:'Wk29-D6',topic:'Write-up & Blog Publishing',learn:'Publish 3 technical writeups on Medium/personal blog (CTF, tools, research)',resources:'https://medium.com | https://dev.to | https://hashnode.com',task:'Publish 3 articles, share on LinkedIn + Twitter',lang:'–',time:'2h'},
+      {day:201,ref:'Wk30-D1',topic:'Mock Interview – Full Round',learn:'Full 1-hour mock technical interview (use Pramp, Interviewing.io, or peer)',resources:'https://www.pramp.com | https://interviewing.io',task:'Do a full mock interview, get feedback, iterate',lang:'–',time:'2h'},
+      {day:202,ref:'Wk30-D2',topic:'Cloud Security Certification Prep',learn:'AWS Security Specialty or AZ-500 study: key services, exam tips',resources:'https://www.youtube.com/watch?v=qTzGFmfQoTE | https://acloudguru.com/blog/',task:'Complete 30 AWS security practice questions',lang:'AWS',time:'2h'},
+      {day:203,ref:'Wk30-D3',topic:'Soft Skills: Communication',learn:'Explaining technical concepts to non-technical stakeholders, executive summaries',resources:'https://www.youtube.com/watch?v=F4Zu5OEEF_s | https://www.coursera.org/learn/wharton-communication-skills',task:'Write an executive summary of your capstone project',lang:'–',time:'2h'},
+      {day:204,ref:'Wk30-D4',topic:'Final Projects Polish',learn:'Clean up all GitHub projects: fix bugs, add README, add screenshots, tests',resources:'https://github.com | https://pages.github.com',task:'All projects polished with professional READMEs',lang:'–',time:'2h'},
+      {day:205,ref:'Wk30-D5',topic:'CAPSTONE: Full Pentest Report',learn:'Pentest a VulnHub machine, produce a full professional pentest report (15+ pages)',resources:'https://www.vulnhub.com | https://github.com/hmaverickadams/TCM-Security-Sample-Pentest-Report',task:'Published pentest report on GitHub Pages',lang:'–',time:'3h'},
+      {day:206,ref:'Wk30-D6',topic:'CAPSTONE: Security Tool Suite',learn:'Compile all your tools into a unified toolkit with CLI and documentation',resources:'https://github.com | https://click.palletsprojects.com',task:'Published security toolkit on GitHub with pip install support',lang:'Python',time:'3h'},
+      {day:207,ref:'Wk31-D1',topic:'Day 1 as a Security Professional',learn:'Setting up a lab at work, staying current (RSS, Twitter, CVE feeds), mentorship',resources:'https://www.youtube.com/watch?v=Wfx5H5gN3e8 | https://feedly.com',task:'Set up your CVE monitoring dashboard with Feedly + Twitter',lang:'–',time:'2h'},
+      {day:208,ref:'Wk31-D2',topic:'Continuous Learning Plan',learn:'Create 1-year learning plan post-bootcamp: certs, CTFs, conferences (DEF CON, SANS)',resources:'https://www.defcon.org | https://www.sans.org | https://ctftime.org',task:'Create a 12-month post-roadmap learning schedule',lang:'–',time:'2h'},
+      {day:209,ref:'Wk31-D3',topic:'Final Mock Interviews x2',learn:'Two back-to-back mock interviews covering all domains',resources:'https://www.pramp.com | https://interviewing.io',task:'Score yourself on STAR, technical depth, confidence',lang:'–',time:'2h'},
+      {day:210,ref:'Wk31-D4',topic:'GRADUATION DAY 🎓',learn:'Review your journey, celebrate milestones, plan next steps, pay it forward',resources:'https://tryhackme.com/room/startingoutincybersec | https://www.hackthebox.com',task:'Post your 7-month journey story on LinkedIn 🚀',lang:'–',time:'2h'},
+    ]
+  }
+];
+
+const projects = [
+  {num:1,name:'Network Recon Tool',phase:'Month 1',desc:'Bash script: nmap scan → parse → log → email report',tools:'Bash'},
+  {num:2,name:'CTF: Basic Pentesting Machine',phase:'Month 1',desc:'TryHackMe machine owned with full written report',tools:'Kali Linux'},
+  {num:3,name:'Python Port Scanner',phase:'Month 2',desc:'Multi-threaded, banner grabbing, HTML report output',tools:'Python'},
+  {num:4,name:'Python Exploit Framework',phase:'Month 2',desc:'Mini Metasploit-like: module loader, payload delivery',tools:'Python'},
+  {num:5,name:'ReconTool v1 (Domain Intel)',phase:'Month 2',desc:'Nmap + WHOIS + DNS + Shodan API integration',tools:'Python'},
+  {num:6,name:'C Port Scanner + Fingerprinter',phase:'Month 3',desc:'Multi-threaded, OS fingerprinting via TCP/IP analysis',tools:'C, pthreads'},
+  {num:7,name:'Buffer Overflow Exploit',phase:'Month 3',desc:'Complete BoF exploit with shellcode for exploit.education',tools:'C, GDB, Python'},
+  {num:8,name:'XSSploiter Framework',phase:'Month 3.5',desc:'Crawl site, find params, inject XSS payloads, steal cookies',tools:'JavaScript, Node.js'},
+  {num:9,name:'Full Web App Pentest',phase:'Month 4',desc:'End-to-end pentest: Mr. Robot VulnHub + professional report',tools:'Kali, Burp, Python'},
+  {num:10,name:'Active Directory Attack Chain',phase:'Month 4',desc:'Full AD compromise: recon → Kerberoast → DC Admin',tools:'BloodHound, Mimikatz'},
+  {num:11,name:'Python C2 Framework',phase:'Month 5',desc:'Flask server + Python agent + AES encrypted comms',tools:'Python, Flask'},
+  {num:12,name:'C-Based Beacon',phase:'Month 5',desc:'WinAPI HTTP beacon with AES encryption + persistence',tools:'C, WinAPI'},
+  {num:13,name:'Full Red Team Simulation',phase:'Month 5',desc:'Complete red team op: phish → C2 → pivot → DC + report',tools:'Multiple'},
+  {num:14,name:'Custom Offensive Tool',phase:'Month 5',desc:'Subdomain takeover checker / JWT cracker / S3 scanner',tools:'Python'},
+  {num:15,name:'Cloud Security Audit',phase:'Month 6',desc:'AWS Scout Suite audit with full remediation report',tools:'AWS, Python'},
+  {num:16,name:'CAPSTONE Pentest Report',phase:'Month 7',desc:'15+ page professional pentest report on VulnHub machine',tools:'Kali, all tools'},
+  {num:17,name:'Security Tool Suite',phase:'Month 7',desc:'Unified toolkit with CLI, pip installable, GitHub Actions CI',tools:'Python, Click'},
+];
+
+const resources = {
+  '🐧 Linux & Bash': [
+    {name:'TryHackMe Linux Fundamentals', url:'https://tryhackme.com/module/linux-fundamentals', type:'Interactive'},
+    {name:'OverTheWire Bandit', url:'https://overthewire.org/wargames/bandit/', type:'Wargame'},
+    {name:'The Linux Command Line (free book)', url:'https://linuxcommand.org/tlcl.php', type:'Book'},
+  ],
+  '🐍 Python': [
+    {name:'Python for Everybody – Coursera (audit free)', url:'https://www.coursera.org/specializations/python', type:'Course'},
+    {name:'Real Python Tutorials', url:'https://realpython.com', type:'Tutorials'},
+    {name:'Black Hat Python (examples on GitHub)', url:'https://github.com/EONRaider/blackhat-python3', type:'Book Code'},
+    {name:'Automate the Boring Stuff (free online)', url:'https://automatetheboringstuff.com', type:'Book'},
+  ],
+  '⚙️ C Language': [
+    {name:'CS50x Harvard (free)', url:'https://cs50.harvard.edu/x/', type:'Course'},
+    {name:"Beej's Guide to C Programming", url:'https://beej.us/guide/bgc/', type:'Guide'},
+    {name:'exploit.education (BoF labs)', url:'https://exploit.education', type:'CTF/Lab'},
+  ],
+  '🌐 JavaScript': [
+    {name:'javascript.info (free complete course)', url:'https://javascript.info', type:'Tutorial'},
+    {name:'PortSwigger Web Security Academy', url:'https://portswigger.net/web-security', type:'Labs'},
+    {name:'NodeGoat (vulnerable Node app)', url:'https://github.com/OWASP/NodeGoat', type:'Lab'},
+  ],
+  '🛡️ Security Practice': [
+    {name:'TryHackMe', url:'https://tryhackme.com', type:'Platform'},
+    {name:'HackTheBox', url:'https://www.hackthebox.com', type:'Platform'},
+    {name:'PicoCTF', url:'https://picoctf.org', type:'CTF'},
+    {name:'pwn.college', url:'https://pwn.college', type:'Binary Exploit'},
+    {name:'VulnHub', url:'https://www.vulnhub.com', type:'VMs'},
+    {name:'DVWA', url:'https://dvwa.co.uk', type:'Web Lab'},
+  ],
+  '☁️ Cloud Security': [
+    {name:'AWS Free Tier', url:'https://aws.amazon.com/free/', type:'Platform'},
+    {name:'CloudGoat (AWS attack lab)', url:'https://github.com/RhinoSecurityLabs/cloudgoat', type:'Lab'},
+    {name:'Microsoft Azure Free', url:'https://azure.microsoft.com/en-us/free/', type:'Platform'},
+  ],
+  '📖 References': [
+    {name:'OWASP Top 10', url:'https://owasp.org/www-project-top-ten/', type:'Reference'},
+    {name:'MITRE ATT&CK Framework', url:'https://attack.mitre.org', type:'Framework'},
+    {name:'Exploit Database', url:'https://www.exploit-db.com', type:'Database'},
+    {name:'GTFOBins', url:'https://gtfobins.github.io', type:'Reference'},
+    {name:'LOLBAS Project', url:'https://lolbas-project.github.io', type:'Reference'},
+  ],
+  '🎥 YouTube Channels': [
+    {name:'NetworkChuck', url:'https://www.youtube.com/@NetworkChuck', type:'YouTube'},
+    {name:'John Hammond', url:'https://www.youtube.com/@_JohnHammond', type:'YouTube'},
+    {name:'IppSec (HTB Walkthroughs)', url:'https://www.youtube.com/@ippsec', type:'YouTube'},
+    {name:'LiveOverflow', url:'https://www.youtube.com/@LiveOverflow', type:'YouTube'},
+    {name:'TCM Security', url:'https://www.youtube.com/@TCMSecurityAcademy', type:'YouTube'},
+  ]
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let completed = JSON.parse(localStorage.getItem('cyberRoadmapCompleted') || '{}');
+
+function saveCompleted() {
+  localStorage.setItem('cyberRoadmapCompleted', JSON.stringify(completed));
+}
+
+function toggleDay(day) {
+  if (completed[day]) {
+    delete completed[day];
+  } else {
+    completed[day] = true;
+  }
+  saveCompleted();
+  updateProgress();
+  // Update the specific card
+  const card = document.querySelector(`.day-card[data-day="${day}"]`);
+  if (card) {
+    card.classList.toggle('completed', !!completed[day]);
+    const btn = card.querySelector('.day-check');
+    if (btn) btn.textContent = completed[day] ? '✓' : '';
+  }
+}
+
+function updateProgress() {
+  const total = 210;
+  const done = Object.keys(completed).length;
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('overallBar').style.width = pct + '%';
+  document.getElementById('overallPct').textContent = pct;
+  document.getElementById('completedCount').textContent = done;
+  // Update per-month progress bars
+  months.forEach(m => {
+    const bar = document.getElementById('bar-' + m.id);
+    const count = document.getElementById('count-' + m.id);
+    if (!bar) return;
+    const monthDone = m.days.filter(d => completed[d.day]).length;
+    const monthPct = Math.round((monthDone / m.days.length) * 100);
+    bar.style.width = monthPct + '%';
+    if (count) count.textContent = monthDone + ' / ' + m.days.length + ' days';
+  });
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderMonth(m) {
+  const container = document.getElementById('tab-' + m.id);
+  if (container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+
+  const totalDays = m.days.length;
+
+  container.innerHTML = `
+    <div class="section-header">
+      <div class="section-title" style="color:#fff">${m.title}</div>
+      <div class="section-badge" style="--section-color:${m.color};color:${m.color};border-color:${m.color}">${totalDays} Days</div>
+    </div>
+    <div class="progress-bar-wrap" style="--section-color:${m.color}">
+      <div class="progress-label">PROGRESS</div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="bar-${m.id}" style="width:0%"></div>
+      </div>
+      <div class="progress-count" id="count-${m.id}">0 / ${totalDays} days</div>
+    </div>
+    <input class="search-bar" placeholder="🔍 Search topics, tools, tasks..." oninput="filterDays('${m.id}', this.value)" />
+    <div class="day-grid" id="grid-${m.id}">
+      ${m.days.map(d => renderDayCard(d, m.color)).join('')}
+    </div>
+  `;
+}
+
+function renderDayCard(d, color) {
+  const links = d.resources.split('|').map(u => u.trim()).filter(Boolean);
+  const isComplete = !!completed[d.day];
+  return `
+    <div class="day-card${isComplete ? ' completed' : ''}" data-day="${d.day}" style="--section-color:${color}">
+      <div>
+        <div class="day-num">${d.day}</div>
+        <div class="day-ref">${d.ref}</div>
+      </div>
+      <div class="day-body">
+        <div class="day-topic">${d.topic}</div>
+        <div class="day-learn">${d.learn}</div>
+        <div class="day-task">${d.task}</div>
+        <div class="day-links">
+          ${links.map((u,i) => `<a href="${u}" target="_blank" rel="noopener" class="day-link">Resource ${i+1} ↗</a>`).join('')}
+        </div>
+      </div>
+      <div class="day-meta">
+        ${d.lang !== '–' ? `<div class="day-lang">${d.lang}</div>` : ''}
+        <div class="day-time">⏱ ${d.time}</div>
+        <button class="day-check" onclick="toggleDay(${d.day}); event.stopPropagation();" title="Mark complete">${isComplete ? '✓' : ''}</button>
+      </div>
+    </div>
+  `;
+}
+
+function filterDays(id, query) {
+  const q = query.toLowerCase();
+  const cards = document.querySelectorAll(`#grid-${id} .day-card`);
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+}
+
+function renderProjects() {
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = projects.map(p => `
+    <div class="project-card" data-num="${p.num}">
+      <div class="project-num">PROJECT #${String(p.num).padStart(2,'0')}</div>
+      <div class="project-name">${p.name}</div>
+      <div class="project-desc">${p.desc}</div>
+      <div class="project-footer">
+        <div class="project-phase">${p.phase}</div>
+        <div class="project-lang">${p.tools}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderResources() {
+  const container = document.getElementById('resourcesContainer');
+  let html = '';
+  for (const [cat, items] of Object.entries(resources)) {
+    html += `<div class="res-category-header">${cat}</div>`;
+    html += `<div class="resources-grid">`;
+    items.forEach(r => {
+      html += `
+        <div class="res-item">
+          <div class="res-name">${r.name}</div>
+          <div class="res-type">${r.type}</div>
+          <a href="${r.url}" target="_blank" rel="noopener" class="res-link">Visit ↗</a>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
+  container.innerHTML = html;
+}
+
+// ============================================================
+// TAB SWITCHING
+// ============================================================
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelector(`[data-phase="${id}"]`).classList.add('active');
+  // Lazy render
+  const m = months.find(m => m.id === id);
+  if (m) renderMonth(m);
+  updateProgress();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderProjects();
+renderResources();
+updateProgress();
+</script>
+</body>
+</html>
